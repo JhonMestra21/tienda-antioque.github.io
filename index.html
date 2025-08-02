@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Productos Día de la Antioqueñidad</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header>
+    <button id="menu-btn">&#9776</button>
+    <img src="img/logo.png" alt="Logo Evento">
+    <h1>Productos Día de la Antioqueñidad</h1>
+  </header>
+
+  <nav id="menu-nav">
+    <button onclick="filtrar('todos')">Todos</button>
+    <button onclick="filtrar('asados')">Asados</button>
+    <button onclick="filtrar('comidas')">Comidas Rápidas</button>
+    <button onclick="filtrar('dulces')">Dulces y Bebidas</button>
+    <button onclick="filtrar('sancocho')">Sancocho</button>
+    <button onclick="filtrar('tamales')">Tamales y Fiambres</button>
+    <button onclick="filtrar('cazuelas')">Cazuelas de Frijoles</button>
+  </nav>
+
+<div class="seccion bancos" style="display:block;">
+    <h2>🏦 Bancos - Compra de Fichos</h2>
+    <div class="productos">
+      <div class="producto">
+        <img src="img/banco1.jpg" alt="Banco Informática">
+        <h4>Banco #1</h4>
+        <p>Ubicación: 💻 Sala de Informática</p>
+      </div>
+      <div class="producto">
+        <img src="img/banco2.jpg" alt="Banco Secretaría">
+        <h4>Banco #2</h4>
+        <p>Ubicación: 📞 Secretaría</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sección Asados -->
+  <div class="seccion asados">
+    <h2>🗺️ Kiosco al lado de Informática 📍</h2>
+    <img src="img/anturios.jpg" alt="Asados">
+    <div class="productos">
+      <div class="producto">
+        <img src="img/chorizo_asado.jpg" alt="chorizo_asado">
+        <h4>Chorizo Asado</h4>
+        <p>$10.000</p>
+      </div>
+      <div class="producto">
+        <img src="img/chuzo.jpg" alt="chuzo">
+        <h4>Chuzo</h4>
+        <p>$16.000</p>
+      </div>
+      <div class="producto">
+        <img src="img/picada.jpg" alt="picada">
+        <h4>Picada</h4>
+        <p>$18.000</p>
+      </div>
+      <div class="producto">
+        <img src="img/cola_pola.jpg" alt="cola y pola">
+        <h4>Cola y Pola</h4>
+        <p>$5.000</p>
+      </div>
+      <div class="producto">
+        <img src="img/agua.jpg" alt="agua">
+        <h4>Agua</h4>
+        <p>$2.000 - $2.500</p>
+      </div>
+      <div class="producto">
+        <img src="img/pesca_milagrosa.jpg" alt="Pesca Milagrosa">
+        <h4>Pesca Milagrosa</h4>
+        <p>$2.000</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sección Comidas rápidas -->
+  <div class="seccion comidas">
+    <h2>🗺️ Kiosco de Ed. Física 📍</h2>
+    <img src="img/claveles.jpg" alt="Comidas Rápidas">
+    <div class="productos">
+        <div class="producto">
+            <img src="img/perro_vegano.jpg" alt="Perro Vegano">
+            <h4>Perro Vegano</h4>
+            <p>$10.000</p>
+        </div>
+        <div class="producto">
+            <img src="img/perro_tradicional.jpg" alt="Perro Tradicional">
+            <h4>Perro Tradicional</h4>
+            <p>$12.000</p>
+        </div>
+        <div class="producto">
+            <img src="img/choriperro.jpg" alt="Choriperro">
+            <h4>Choriperro</h4>
+            <p>$14.000</p>
+        </div>
+        <div class="producto">
+            <img src="img/hamburguesa.jpeg" alt="Hamburguesa">
+            <h4>Hamburguesas</h4>
+            <p>$16.000</p>
+        </div>
+        <div class="producto">
+            <img src="img/gaseosas.jpg" alt="Gaseosas">
+            <h4>Gaseosas</h4>
+            <p>$4.000</p>
+        </div>
+    </div>
+  </div>
+
+  <!-- Sección Postres -->
+  <div class="seccion dulces">
+    <h2>🗺️ Hall de bachillerato (6°) 📍</h2>
+    <img src="img/cartucho.jpg" alt="Postres">
+    <div class="productos">
+      <div class="producto">
+        <img src="img/pastel_mini.jpg" alt="mini pastel">
+        <h4>Mini Pastel de Arequipe</h4>
+        <p>$500</p>
+      </div>
+      <div class="producto">
+        <img src="img/vaso_helado.jpg" alt="Vaso de Helado">
+        <h4>Vaso de Helado</h4>
+        <p>$2.500</p>
+      </div>
+      <div class="producto">
+        <img src="img/porcion_torta.jpg" alt="Porción de Torta">
+        <h4>Porción de Torta</h4>
+        <p>$3.000</p>
+      </div>
+      <div class="producto">
+        <img src="img/chocono.jpeg" alt="Chococono">
+        <h4>Chococonos</h4>
+        <p>$4.000</p>
+      </div>
+      <div class="producto">
+        <img src="img/barquillos.jpeg" alt="Barquillos">
+        <h4>Barquillos</h4>
+        <p>$4.500</p>
+      </div>
+      <div class="producto">
+        <img src="img/postres_varios.jpg" alt="Postes Variados">
+        <h4>Postres Variados</h4>
+        <p>$6.500</p>
+      </div>
+      <div class="producto">
+        <img src="img/arroz_leche.jpg" alt="Arróz con Leche">
+        <h4>Arróz con Leche</h4>
+        <p>$8.000</p>
+      </div>
+      <div class="producto">
+        <img src="img/pastel_guayaba.jpg" alt="Pastel de Guayaba">
+        <h4>Pastel del Guayaba</h4>
+        <p>$2.000</p>
+      </div>
+      <div class="producto">
+        <img src="img/pastel_arequipe.jpg" alt="Pastel de Arequipe">
+        <h4>Pastel de Arequipe</h4>
+        <p>$2.000</p>
+      </div>
+      <div class="producto">
+        <img src="img/palomitas2.jpg" alt="Palomitas">
+        <h4>Palomitas</h4>
+        <p>$2.000</p>
+      </div>
+      <div class="producto">
+        <img src="img/aros_limon.jpg" alt="Aros de limón">
+        <h4>Aros de Limón</h4>
+        <p>$2.000</p>
+      </div>
+      <div class="producto">
+        <img src="img/camboyanas.jpg" alt="Camboyanas">
+        <h4>Camboyanas</h4>
+        <p>$2.000</p>
+      </div>
+      <div class="producto">
+        <img src="img/papas_limon.jpg" alt="Papas de Limón">
+        <h4>Papas de Limón</h4>
+        <p>$3.000</p>
+      </div>
+      <div class="producto">
+        <img src="img/platanos_limon.png" alt="Platanitos de Limón">
+        <h4>Platanitos de Limón</h4>
+        <p>$3.000</p>
+      </div>
+      <div class="producto">
+        <img src="img/gaseosas.jpg" alt="Gaseosas">
+        <h4>Gaseosas</h4>
+        <p>$-</p>
+      </div>
+      <div class="producto">
+        <img src="img/agua.jpg" alt="Agua">
+        <h4>Agua</h4>
+        <p>$-</p>
+      </div>
+      <div class="producto">
+        <img src="img/micheladas.jpg" alt="Sodas Micheladas">
+        <h4>Sodas Micheladas</h4>
+        <p>$8.000</p>
+      </div>
+      <div class="producto">
+        <img src="img/churros.jpg" alt="Churros">
+        <h4>Churros</h4>
+        <p>$5.000</p>
+      </div>
+    </div>
+  </div>
+
+<!-- Sección Sancocho -->
+<div class="seccion sancocho">
+  <h2>🗺️ Kioscos de las Hnas. (Atrás de la cancha)📍</h2>
+    <img src="img/rosa.png" alt="Postres">
+    <div class="productos">
+      <div class="producto">
+        <img src="img/sancocho.jpg" alt="Sancocho">
+        <h4>Sancocho + Arroz + Fresco</h4>
+        <p>$22.000</p>
+      </div>
+      <div class="producto">
+        <img src="img/porcion_aguacate.jpg" alt="Porción de Aguacate">
+        <h4>Porción de Aguacate</h4>
+        <p>$2.000</p>
+      </div>
+      <div class="producto">
+        <img src="img/brinquitos.jpg" alt="Brinquitos">
+        <h4>Brinquitos</h4>
+        <p>$6.000</p>
+      </div>
+      <div class="producto">
+        <img src="img/piscina2.png" alt="Piscinas de Pelotas">
+        <h4>Piscinas de Pelotas</h4>
+        <p>$6.000</p>
+      </div>
+      <div class="producto">
+        <img src="img/varios.jpg" alt="Juegos Varios">
+        <h4>Juegos Variso</h4>
+        <p>$6.000</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sección Tamales -->
+  <div class="seccion tamales">
+    <h2>🗺️ Hall de bachillerato (8°) 📍</h2>
+    <img src="img/girasol.jpg" alt="Tamales">
+    <div class="productos">
+      <div class="producto">
+        <img src="img/tamales.jpg" alt="Tamal">
+        <h4>Tamales + Gaseosa</h4>
+        <p>$15.000</p>
+      </div>
+      <div class="producto">
+        <img src="img/fiambre.jpg" alt="Fiambre">
+        <h4>Fiambre + Gaseosa</h4>
+        <p>$20.000</p>
+      </div>
+      <div class="producto">
+        <img src="img/bolis.jpg" alt="Bolis">
+        <h4>Bolis Gourmet</h4>
+        <p>$3.000</p>
+      </div>
+      <div class="producto">
+        <img src="img/paletas.jpg" alt="Paletas">
+        <h4>Paletas Artesanales</h4>
+        <p>$4.000</p>
+      </div>
+      <div class="producto">
+        <img src="img/cafe.jpg" alt="Café">
+        <h4>Café Express</h4>
+        <p>$3.000</p>
+    </div>
+    <div class="producto">
+        <img src="img/tinto.jpg" alt="Tinto">
+        <h4>Tinto</h4>
+        <p>$2.000</p>
+    </div>
+    <div class="producto">
+        <img src="img/aromatica.jpg" alt="Aromatica">
+        <h4>Aromáticas</h4>
+        <p>$3.000</p>
+    </div>
+    <div class="producto">
+        <img src="img/capuchino.jpg" alt="Capuchino">
+        <h4>Capuchino</h4>
+        <p>$8.000</p>
+    </div>
+    <div class="producto">
+        <img src="img/agua.jpg" alt="Agua">
+        <h4>Agua</h4>
+        <p>$1.000</p>
+    </div>
+    <div class="producto">
+        <img src="img/vaso_gaseosa.jpg" alt="Vaso de Gaseosa">
+        <h4>Aromáticas</h4>
+        <p>$2.000</p>
+    </div>
+  </div>
+   </div>
+
+  <!-- Cazuelas --> 
+  <div class="seccion cazuelas">
+    <h2>🗺️ Tienda Escolar 📍</h2>
+    <img src="img/Hortensias.jpg" alt="Sancocho">
+    <div class="productos">
+      <div class="producto">
+        <img src="img/cazuela-frijoles.png" alt="Cazuela">
+        <h4>Cazuelas de Frijoles + Guandolo</h4>
+        <p>$22.000</p>
+      </div>
+  </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
