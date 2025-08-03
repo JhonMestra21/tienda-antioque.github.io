@@ -17,12 +17,12 @@
 
   <nav id="menu-nav">
     <button onclick="filtrar('todos')">Todos</button>
-    <button onclick="filtrar('asados')">Asados</button>
-    <button onclick="filtrar('comidas')">Comidas Rápidas</button>
-    <button onclick="filtrar('dulces')">Dulces y Bebidas</button>
-    <button onclick="filtrar('sancocho')">Sancocho</button>
-    <button onclick="filtrar('tamales')">Tamales y Fiambres</button>
-    <button onclick="filtrar('cazuelas')">Cazuelas de Frijoles</button>
+    <button onclick="filtrar('asados')">Asados <span class="resalto">Pre y 2°</span></button>
+    <button onclick="filtrar('comidas')">Comidas  <span class="resalto">Rápidas 1° y 8°</span></button>
+    <button onclick="filtrar('dulces')">Dulces y Bebidas <span class="resalto">3° y 10°</span></button>
+    <button onclick="filtrar('sancocho')">Sancocho <span class="resalto">4°A, 4°B y 9°</span></button>
+    <button onclick="filtrar('tamales')">Tamales y Fiambres <span class="resalto">5° y 6°</span></button>
+    <button onclick="filtrar('cazuelas')">Cazuelas de Frijoles <span class="resalto">7° y 11°</span></button>
   </nav>
 
 <div class="seccion bancos" style="display:block;">
@@ -44,7 +44,10 @@
   <!-- Sección Asados -->
   <div class="seccion asados">
     <h2>🗺️ Kiosco al lado de Informática 📍</h2>
-    <img src="img/anturios.jpg" alt="Asados">
+    <div class="flor">
+      <img src="img/anturios.jpg" alt="Asados">
+      <div class="titulo-imagen">Anturios</div>
+    </div>    
     <div class="productos">
       <div class="producto">
         <img src="img/chorizo_asado.jpg" alt="chorizo_asado">
@@ -82,7 +85,10 @@
   <!-- Sección Comidas rápidas -->
   <div class="seccion comidas">
     <h2>🗺️ Kiosco de Ed. Física 📍</h2>
-    <img src="img/claveles.jpg" alt="Comidas Rápidas">
+    <div class="flor">
+      <img src="img/claveles.jpg" alt="Comidas Rápidas">
+      <div class="titulo-imagen">Claveles</div>
+    </div>
     <div class="productos">
         <div class="producto">
             <img src="img/perro_vegano.jpg" alt="Perro Vegano">
@@ -115,7 +121,10 @@
   <!-- Sección Postres -->
   <div class="seccion dulces">
     <h2>🗺️ Hall de bachillerato (6°) 📍</h2>
-    <img src="img/cartucho.jpg" alt="Postres">
+    <div class="flor">
+      <img src="img/cartucho.jpg" alt="Postres">
+      <div class="titulo-imagen">Cartucho</div>
+    </div>
     <div class="productos">
       <div class="producto">
         <img src="img/pastel_mini.jpg" alt="mini pastel">
@@ -213,7 +222,10 @@
 <!-- Sección Sancocho -->
 <div class="seccion sancocho">
   <h2>🗺️ Kioscos de las Hnas. (Atrás de la cancha)📍</h2>
+  <div class="flor">
     <img src="img/rosa.png" alt="Postres">
+    <div class="titulo-imagen">Rosa</div>
+  </div>
     <div class="productos">
       <div class="producto">
         <img src="img/sancocho.jpg" alt="Sancocho">
@@ -246,7 +258,10 @@
   <!-- Sección Tamales -->
   <div class="seccion tamales">
     <h2>🗺️ Hall de bachillerato (8°) 📍</h2>
-    <img src="img/girasol.jpg" alt="Tamales">
+    <div class="flor">
+      <img src="img/girasol.jpg" alt="Tamales">
+      <div class="titulo-imagen">Girasol</div>
+    </div>
     <div class="productos">
       <div class="producto">
         <img src="img/tamales.jpg" alt="Tamal">
@@ -304,7 +319,10 @@
   <!-- Cazuelas --> 
   <div class="seccion cazuelas">
     <h2>🗺️ Tienda Escolar 📍</h2>
-    <img src="img/Hortensias.jpg" alt="Sancocho">
+    <div class="flor">
+      <img src="img/Hortensias.jpg" alt="Sancocho">
+      <div class="titulo-imagen">Hortensias</div>
+    </div>
     <div class="productos">
       <div class="producto">
         <img src="img/cazuela-frijoles.png" alt="Cazuela">
