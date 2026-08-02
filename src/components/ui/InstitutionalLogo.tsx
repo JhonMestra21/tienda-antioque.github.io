@@ -15,7 +15,7 @@ export const InstitutionalLogo: React.FC<Props> = ({ className = '', size = 'md'
   return (
     <div className={`relative flex items-center justify-center shrink-0 ${sizeMap[size]} ${className}`}>
       <img
-        src="/logo.svg"
+        src="logo.svg"
         alt="Escudo Institucional"
         className="w-full h-full object-contain filter drop-shadow-md transition-transform duration-200 hover:scale-105"
         onError={(e) => {

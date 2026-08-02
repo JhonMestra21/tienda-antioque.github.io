@@ -31,16 +31,16 @@ export const CartDrawer: React.FC<Props> = ({
   return (
     <div className="fixed inset-0 z-50 overflow-hidden bg-slate-950/60 backdrop-blur-xs transition-opacity animate-fadeIn">
       <div className="absolute inset-y-0 right-0 max-w-full flex pl-10">
-        <div className="w-screen max-w-md bg-white shadow-2xl flex flex-col border-l-2 border-amber-400">
+        <div className="w-screen max-w-md bg-white shadow-2xl flex flex-col border-l-2 border-yellow-400">
           {/* Drawer Header */}
-          <div className="bg-gradient-to-r from-red-700 via-red-600 to-red-800 text-white p-5 flex items-center justify-between border-b-2 border-amber-400">
+          <div className="bg-gradient-to-r from-red-600 via-red-500 to-red-600 text-white p-5 flex items-center justify-between border-b-2 border-yellow-400">
             <div className="flex items-center gap-3">
-              <div className="p-2 bg-amber-400 text-slate-950 rounded-xl shadow-md">
+              <div className="p-2 bg-yellow-400 text-slate-950 rounded-xl shadow-md">
                 <Calculator className="w-6 h-6 text-red-900" />
               </div>
               <div>
                 <h2 className="font-black text-lg sm:text-xl text-white">Calculadora de Fichos</h2>
-                <p className="text-xs text-amber-200">
+                <p className="text-xs text-yellow-200">
                   {totalItemsCount} {totalItemsCount === 1 ? 'producto en carrito' : 'productos seleccionados'}
                 </p>
               </div>
@@ -48,7 +48,7 @@ export const CartDrawer: React.FC<Props> = ({
 
             <button
               onClick={onClose}
-              className="p-2 rounded-full hover:bg-black/20 text-amber-300 transition-colors"
+              className="p-2 rounded-full hover:bg-black/20 text-yellow-300 transition-colors"
               title="Cerrar calculadora"
               aria-label="Cerrar calculadora"
             >
@@ -140,7 +140,7 @@ export const CartDrawer: React.FC<Props> = ({
 
           {/* Drawer Footer - Calculations & Actions */}
           {cartItems.length > 0 && (
-            <div className="p-5 bg-slate-900 text-white border-t-2 border-amber-400 space-y-4">
+            <div className="p-5 bg-slate-900 text-white border-t-2 border-yellow-400 space-y-4">
               {/* Summary Stats Grid */}
               <div className="space-y-2 text-xs bg-slate-800/80 p-3.5 rounded-2xl border border-slate-700">
                 <div className="flex justify-between text-slate-300">
@@ -153,14 +153,14 @@ export const CartDrawer: React.FC<Props> = ({
                 </div>
                 <div className="flex justify-between text-slate-300 border-t border-slate-700 pt-1.5">
                   <span className="text-slate-200 font-semibold">Tasa de cambio:</span>
-                  <span className="text-amber-300 font-medium">1 Ficho = {formatCOP(FICHO_VALUE_COP)}</span>
+                  <span className="text-yellow-300 font-medium">1 Ficho = {formatCOP(FICHO_VALUE_COP)}</span>
                 </div>
                 <div className="flex justify-between items-center text-sm pt-2 border-t border-slate-700">
-                  <span className="font-black text-amber-300 flex items-center gap-1.5">
+                  <span className="font-black text-yellow-300 flex items-center gap-1.5">
                     <Coins className="w-4 h-4" />
                     Total Fichos Necesarios:
                   </span>
-                  <span className="text-xl font-black text-amber-400 bg-amber-400/10 px-2.5 py-1 rounded-xl border border-amber-400/30">
+                  <span className="text-xl font-black text-yellow-400 bg-yellow-400/10 px-2.5 py-1 rounded-xl border border-yellow-400/30">
                     {formatFichos(totalFichosNeeded)}
                   </span>
                 </div>
@@ -170,9 +170,9 @@ export const CartDrawer: React.FC<Props> = ({
               <div className="space-y-2">
                 <button
                   onClick={onFinalizeCalculation}
-                  className="w-full py-3.5 px-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-amber-300 font-black rounded-xl text-sm shadow-lg border border-amber-400 flex items-center justify-center gap-2 active:scale-98 transition-all"
+                  className="w-full py-3.5 px-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-yellow-300 font-black rounded-xl text-sm shadow-lg border border-yellow-400 flex items-center justify-center gap-2 active:scale-98 transition-all"
                 >
-                  <Coins className="w-5 h-5 text-amber-300" />
+                  <Coins className="w-5 h-5 text-yellow-300" />
                   <span>Finalizar Cálculo de Fichos</span>
                 </button>
 

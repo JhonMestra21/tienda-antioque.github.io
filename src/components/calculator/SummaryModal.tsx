@@ -29,22 +29,22 @@ export const SummaryModal: React.FC<Props> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-xs animate-fadeIn">
-      <div className="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl border-2 border-amber-400 overflow-hidden flex flex-col max-h-[90vh]">
+      <div className="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl border-2 border-yellow-400 overflow-hidden flex flex-col max-h-[90vh]">
         {/* Header banner */}
-        <div className="bg-gradient-to-r from-red-700 via-red-600 to-red-800 text-white p-5 sm:p-6 text-center relative">
+        <div className="bg-gradient-to-r from-red-600 via-red-500 to-red-600 text-white p-5 sm:p-6 text-center relative">
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 p-2 rounded-full bg-black/20 hover:bg-black/40 text-amber-300 transition-colors"
+            className="absolute top-4 right-4 p-2 rounded-full bg-black/20 hover:bg-black/40 text-yellow-300 transition-colors"
             title="Cerrar"
           >
             <X className="w-5 h-5" />
           </button>
 
-          <div className="w-14 h-14 mx-auto mb-3 bg-amber-400 text-slate-950 rounded-2xl flex items-center justify-center shadow-lg border-2 border-white">
+          <div className="w-14 h-14 mx-auto mb-3 bg-yellow-400 text-slate-950 rounded-2xl flex items-center justify-center shadow-lg border-2 border-white">
             <Coins className="w-8 h-8 text-red-900" />
           </div>
 
-          <span className="text-xs font-bold tracking-widest text-amber-300 uppercase block mb-1">
+          <span className="text-xs font-bold tracking-widest text-yellow-300 uppercase block mb-1">
             Simulación Día de la Antioqueñidad
           </span>
           <h2 className="text-xl sm:text-2xl font-black text-white">
@@ -55,16 +55,16 @@ export const SummaryModal: React.FC<Props> = ({
         {/* Modal content body */}
         <div className="p-5 sm:p-6 overflow-y-auto space-y-5 flex-1">
           {/* Main Ficho Callout Card */}
-          <div className="bg-gradient-to-br from-amber-50 to-amber-100/70 border-2 border-amber-300 rounded-2xl p-4 text-center space-y-2">
-            <div className="text-xs font-bold text-amber-900 uppercase tracking-wide">
+          <div className="bg-gradient-to-br from-yellow-50 to-amber-100/70 border-2 border-yellow-300 rounded-2xl p-4 text-center space-y-2">
+            <div className="text-xs font-bold text-yellow-900 uppercase tracking-wide">
               Fichos Totales a Adquirir en Banco
             </div>
             <div className="text-3xl sm:text-4xl font-black text-red-700 tracking-tight">
               {formatFichos(totalFichos)}
             </div>
-            <div className="text-xs text-slate-600 font-medium pt-1 border-t border-amber-200">
+            <div className="text-xs text-slate-600 font-medium pt-1 border-t border-yellow-200">
               Valor equivalente en pesos: <strong className="text-slate-900 font-bold">{formatCOP(totalCOP)}</strong>
-              <span className="block text-[11px] text-amber-800 mt-0.5">
+              <span className="block text-[11px] text-yellow-900 mt-0.5">
                 (Tasa fija institucional: 1 Ficho = {formatCOP(FICHO_VALUE_COP)})
               </span>
             </div>
@@ -132,7 +132,7 @@ export const SummaryModal: React.FC<Props> = ({
 
           <button
             onClick={onClose}
-            className="w-full sm:w-auto flex-1 py-2.5 px-4 rounded-xl bg-red-600 text-amber-300 font-bold text-xs hover:bg-red-700 transition-colors shadow-sm"
+            className="w-full sm:w-auto flex-1 py-2.5 px-4 rounded-xl bg-red-600 text-yellow-300 font-bold text-xs hover:bg-red-700 transition-colors shadow-sm"
           >
             Entendido
           </button>

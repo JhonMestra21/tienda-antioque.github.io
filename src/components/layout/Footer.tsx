@@ -4,7 +4,7 @@ import { Coins, Heart, ShieldCheck } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-slate-950 text-white mt-16 border-t-4 border-amber-400">
+    <footer className="bg-slate-950 text-white mt-16 border-t-4 border-yellow-400">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center text-center md:text-left">
           {/* Logo & Info */}
@@ -12,7 +12,7 @@ export const Footer: React.FC = () => {
             <div className="flex items-center gap-3">
               <InstitutionalLogo size="sm" />
               <div>
-                <h3 className="font-black text-lg text-amber-300">
+                <h3 className="font-black text-lg text-yellow-300">
                   Día de la Antioqueñidad
                 </h3>
                 <p className="text-xs text-slate-400">
@@ -27,8 +27,8 @@ export const Footer: React.FC = () => {
 
           {/* Ficho Mechanics Explanation */}
           <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-4 text-xs space-y-2">
-            <div className="flex items-center gap-2 text-amber-400 font-bold justify-center md:justify-start">
-              <Coins className="w-4 h-4 text-amber-400" />
+            <div className="flex items-center gap-2 text-yellow-400 font-bold justify-center md:justify-start">
+              <Coins className="w-4 h-4 text-yellow-400" />
               <span>Sistema de Fichos Institucionales</span>
             </div>
             <p className="text-slate-300 leading-relaxed">
@@ -38,7 +38,7 @@ export const Footer: React.FC = () => {
 
           {/* Institutional Copyright */}
           <div className="flex flex-col items-center md:items-end gap-2 text-xs text-slate-400">
-            <div className="flex items-center gap-1.5 text-amber-300 font-medium">
+            <div className="flex items-center gap-1.5 text-yellow-300 font-medium">
               <ShieldCheck className="w-4 h-4 text-emerald-400" />
               <span>Comunidad Educativa Antioqueña</span>
             </div>

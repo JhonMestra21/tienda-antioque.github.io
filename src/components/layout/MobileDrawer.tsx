@@ -34,20 +34,20 @@ export const MobileDrawer: React.FC<Props> = ({
   return (
     <div className="fixed inset-0 z-50 overflow-hidden bg-slate-950/70 backdrop-blur-xs lg:hidden animate-fadeIn">
       <div className="absolute inset-y-0 left-0 max-w-full flex">
-        <div className="w-screen max-w-xs sm:max-w-sm bg-white shadow-2xl flex flex-col border-r-4 border-amber-400">
+        <div className="w-screen max-w-xs sm:max-w-sm bg-white shadow-2xl flex flex-col border-r-4 border-yellow-400">
           {/* Header */}
-          <div className="bg-gradient-to-r from-red-800 to-red-700 text-white p-5 flex items-center justify-between border-b-2 border-amber-400">
+          <div className="bg-gradient-to-r from-red-600 to-red-700 text-white p-5 flex items-center justify-between border-b-2 border-yellow-400">
             <div className="flex items-center gap-3">
               <InstitutionalLogo size="sm" />
               <div>
-                <h2 className="font-black text-lg text-amber-300">Día de la Antioqueñidad</h2>
+                <h2 className="font-black text-lg text-yellow-300">Día de la Antioqueñidad</h2>
                 <span className="text-xs text-red-100">Menú del Evento</span>
               </div>
             </div>
 
             <button
               onClick={onClose}
-              className="p-2 rounded-full hover:bg-black/20 text-amber-300 transition-colors"
+              className="p-2 rounded-full hover:bg-black/20 text-yellow-300 transition-colors"
               title="Cerrar menú"
             >
               <X className="w-6 h-6" />
@@ -62,13 +62,13 @@ export const MobileDrawer: React.FC<Props> = ({
                 onClose();
                 onOpenCart();
               }}
-              className="w-full bg-gradient-to-r from-slate-900 to-slate-800 text-white p-3.5 rounded-2xl border-2 border-amber-400 flex items-center justify-between shadow-md"
+              className="w-full bg-gradient-to-r from-slate-900 to-slate-800 text-white p-3.5 rounded-2xl border-2 border-yellow-400 flex items-center justify-between shadow-md"
             >
               <div className="flex items-center gap-2.5">
-                <Calculator className="w-5 h-5 text-amber-400" />
-                <span className="font-bold text-amber-300">Calculadora de Fichos</span>
+                <Calculator className="w-5 h-5 text-yellow-400" />
+                <span className="font-bold text-yellow-300">Calculadora de Fichos</span>
               </div>
-              <span className="bg-red-600 text-amber-300 font-extrabold text-xs px-2.5 py-1 rounded-full border border-amber-400">
+              <span className="bg-red-600 text-yellow-300 font-extrabold text-xs px-2.5 py-1 rounded-full border border-yellow-400">
                 {totalCartItems} items
               </span>
             </button>
@@ -88,7 +88,7 @@ export const MobileDrawer: React.FC<Props> = ({
                     onClose();
                   }}
                   className={`w-full text-left px-3 py-2 rounded-xl text-xs font-bold transition-colors ${
-                    selectedZoneId === 'todos' ? 'bg-red-600 text-amber-300' : 'hover:bg-amber-50 text-slate-800'
+                    selectedZoneId === 'todos' ? 'bg-red-600 text-yellow-300' : 'hover:bg-yellow-50 text-slate-800'
                   }`}
                 >
                   🗺️ Todo Antioquia
@@ -101,7 +101,7 @@ export const MobileDrawer: React.FC<Props> = ({
                     onClose();
                   }}
                   className={`w-full text-left px-3 py-2 rounded-xl text-xs font-bold transition-colors ${
-                    selectedZoneId === 'bancos' ? 'bg-red-600 text-amber-300' : 'hover:bg-amber-50 text-slate-800'
+                    selectedZoneId === 'bancos' ? 'bg-red-600 text-yellow-300' : 'hover:bg-yellow-50 text-slate-800'
                   }`}
                 >
                   🏦 Bancos - Compra de Fichos
@@ -116,7 +116,7 @@ export const MobileDrawer: React.FC<Props> = ({
                       onClose();
                     }}
                     className={`w-full text-left px-3 py-2 rounded-xl text-xs font-bold transition-colors ${
-                      selectedZoneId === zone.id ? 'bg-red-600 text-amber-300' : 'hover:bg-amber-50 text-slate-800'
+                      selectedZoneId === zone.id ? 'bg-red-600 text-yellow-300' : 'hover:bg-yellow-50 text-slate-800'
                     }`}
                   >
                     📍 {zone.name}
@@ -151,8 +151,8 @@ export const MobileDrawer: React.FC<Props> = ({
                     }}
                     className={`p-2 rounded-xl text-left font-semibold text-xs flex items-center gap-1.5 border ${
                       activeCategoryFilter === item.id
-                        ? 'bg-amber-400 text-slate-950 border-amber-500 font-bold'
-                        : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-amber-50'
+                        ? 'bg-yellow-400 text-slate-950 border-yellow-500 font-bold'
+                        : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-yellow-50'
                     }`}
                   >
                     <span>{item.icon}</span>

@@ -5,16 +5,16 @@ import { ImagePlaceholder } from '../ui/ImagePlaceholder';
 
 export const BanksSection: React.FC = () => {
   return (
-    <section className="bg-gradient-to-br from-red-900 via-red-800 to-red-950 text-white rounded-3xl p-6 sm:p-8 shadow-2xl border-4 border-amber-400 space-y-6">
+    <section className="bg-gradient-to-br from-red-600 via-red-500 to-red-700 text-white rounded-3xl p-6 sm:p-8 shadow-2xl border-4 border-yellow-400 space-y-6">
       {/* Section Header */}
-      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-red-700/60 pb-6">
+      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-red-400/60 pb-6">
         <div className="space-y-1">
-          <div className="inline-flex items-center gap-1.5 bg-amber-400 text-slate-950 font-black text-xs uppercase tracking-wider px-3 py-1 rounded-full shadow-md">
+          <div className="inline-flex items-center gap-1.5 bg-yellow-400 text-slate-950 font-black text-xs uppercase tracking-wider px-3 py-1 rounded-full shadow-md">
             <Coins className="w-3.5 h-3.5 text-red-900" />
             <span>Puntos Oficiales de Cambio</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl font-black text-amber-300 tracking-tight flex items-center gap-2">
-            <Landmark className="w-8 h-8 text-amber-400" />
+          <h2 className="text-2xl sm:text-3xl font-black text-yellow-300 tracking-tight flex items-center gap-2">
+            <Landmark className="w-8 h-8 text-yellow-400" />
             <span>Bancos - Compra de Fichos</span>
           </h2>
           <p className="text-xs sm:text-sm text-red-100 max-w-2xl leading-relaxed">
@@ -22,13 +22,13 @@ export const BanksSection: React.FC = () => {
           </p>
         </div>
 
-        <div className="bg-red-950/80 border border-amber-400/40 p-4 rounded-2xl text-xs space-y-1 text-amber-200 font-semibold max-w-xs">
-          <div className="flex items-center gap-1.5 font-bold text-amber-400 text-sm">
-            <Sparkles className="w-4 h-4 text-amber-300" />
+        <div className="bg-red-800/80 border border-yellow-400/40 p-4 rounded-2xl text-xs space-y-1 text-yellow-200 font-semibold max-w-xs">
+          <div className="flex items-center gap-1.5 font-bold text-yellow-400 text-sm">
+            <Sparkles className="w-4 h-4 text-yellow-300" />
             <span>Tasa de Fichos</span>
           </div>
           <p>1 Ficho = $1.000 COP</p>
-          <p className="text-[11px] text-red-200 font-normal">
+          <p className="text-[11px] text-red-100 font-normal">
             Calcula tus fichos desde nuestra calculadora interactiva en el menú principal.
           </p>
         </div>
@@ -39,11 +39,11 @@ export const BanksSection: React.FC = () => {
         {BANK_POINTS.map((bank) => (
           <div
             key={bank.id}
-            className="bg-white text-slate-900 rounded-2xl p-5 border-2 border-amber-300 shadow-xl space-y-4 hover:scale-[1.01] transition-transform"
+            className="bg-white text-slate-900 rounded-2xl p-5 border-2 border-yellow-400 shadow-xl space-y-4 hover:scale-[1.01] transition-transform"
           >
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-red-600 text-amber-300 flex items-center justify-center font-black shadow-md">
+                <div className="w-10 h-10 rounded-xl bg-red-600 text-yellow-300 flex items-center justify-center font-black shadow-md">
                   <Landmark className="w-5 h-5" />
                 </div>
                 <div>
@@ -76,8 +76,8 @@ export const BanksSection: React.FC = () => {
       </div>
 
       {/* Info notice footer */}
-      <div className="flex items-center gap-3 bg-red-950/60 border border-amber-400/30 p-3.5 rounded-2xl text-xs text-amber-200">
-        <Info className="w-5 h-5 text-amber-400 shrink-0" />
+      <div className="flex items-center gap-3 bg-red-800/60 border border-yellow-400/30 p-3.5 rounded-2xl text-xs text-yellow-200">
+        <Info className="w-5 h-5 text-yellow-400 shrink-0" />
         <p>
           Recuerda llevar billetes o monedas sencillas para agilizar la entrega de tus fichos en la ventanilla del banco.
         </p>

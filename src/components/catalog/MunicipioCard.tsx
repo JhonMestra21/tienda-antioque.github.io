@@ -17,15 +17,15 @@ export const MunicipioCard: React.FC<Props> = ({
   onAddToCart,
 }) => {
   return (
-    <article className="bg-white rounded-3xl border-2 border-slate-200 shadow-xl overflow-hidden transition-all hover:border-amber-400">
+    <article className="bg-white rounded-3xl border-2 border-slate-200 shadow-xl overflow-hidden transition-all hover:border-yellow-400">
       {/* Municipality Header Banner */}
-      <div className="bg-gradient-to-r from-red-800 via-red-700 to-red-800 text-white p-5 sm:p-6 border-b-4 border-amber-400 flex flex-wrap items-center justify-between gap-4">
+      <div className="bg-gradient-to-r from-red-600 via-red-500 to-red-600 text-white p-5 sm:p-6 border-b-4 border-yellow-400 flex flex-wrap items-center justify-between gap-4">
         <div className="space-y-1">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="text-xs font-black uppercase tracking-wider text-amber-300 bg-red-950/80 px-3 py-1 rounded-full border border-amber-400/30">
+            <span className="text-xs font-black uppercase tracking-wider text-yellow-300 bg-red-800/90 px-3 py-1 rounded-full border border-yellow-400/30">
               Subregión {municipio.zoneName}
             </span>
-            <span className="inline-flex items-center gap-1 text-xs font-bold text-slate-900 bg-amber-400 px-3 py-1 rounded-full shadow-xs">
+            <span className="inline-flex items-center gap-1 text-xs font-bold text-slate-900 bg-yellow-400 px-3 py-1 rounded-full shadow-xs">
               <Users className="w-3.5 h-3.5 text-red-900" />
               Grados: {municipio.responsibleGrades}
             </span>
@@ -37,8 +37,8 @@ export const MunicipioCard: React.FC<Props> = ({
         </div>
 
         {/* Location Pin Badge */}
-        <div className="inline-flex items-center gap-2 bg-red-900/90 border border-amber-400/40 text-amber-200 px-3.5 py-2 rounded-2xl text-xs sm:text-sm font-semibold shadow-inner">
-          <MapPin className="w-4 h-4 text-amber-400 shrink-0" />
+        <div className="inline-flex items-center gap-2 bg-red-700/90 border border-yellow-400/40 text-yellow-200 px-3.5 py-2 rounded-2xl text-xs sm:text-sm font-semibold shadow-inner">
+          <MapPin className="w-4 h-4 text-yellow-300 shrink-0" />
           <span>{municipio.location}</span>
         </div>
       </div>
