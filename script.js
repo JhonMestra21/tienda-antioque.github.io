@@ -164,7 +164,7 @@ function inicializarBuscadorInteligente() {
   });
 }
 
-/* ================== NAVEGACIÓN MÓVIL (MENÚ HAMBURGUESA) ================== */
+/* ================== NAVEGACIÓN DESPLEGABLE (MENÚ HAMBURGUESA GENERAL) ================== */
 function inicializarMenuHamburguesa() {
   const menuBtn = document.getElementById('menu-btn');
   const menuNav = document.getElementById('menu-nav');

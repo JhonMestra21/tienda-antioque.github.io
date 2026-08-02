@@ -44,14 +44,15 @@ h1, h2, h3, h4, .btn-filtro {
   color: var(--color-texto);
 }
 
-/* ================== ENCABEZADO ================== */
+/* ================== ENCABEZADO Y MENÚ HAMBURGUESA GENERAL ================== */
 .header-principal {
   background: linear-gradient(135deg, var(--color-primario-oscuro), var(--color-primario));
   color: var(--color-blanco);
   padding: 1rem 1.5rem;
   box-shadow: var(--sombra-md);
-  position: relative;
-  z-index: 100;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .header-contenido {
@@ -69,8 +70,8 @@ h1, h2, h3, h4, .btn-filtro {
 }
 
 .logo-colegio {
-  width: 65px;
-  height: 65px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   object-fit: contain;
   background: var(--color-blanco);
@@ -93,16 +94,16 @@ h1, h2, h3, h4, .btn-filtro {
 
 .header-principal h1 {
   color: var(--color-blanco);
-  font-size: 1.6rem;
+  font-size: 1.55rem;
   font-weight: 700;
   line-height: 1.2;
 }
 
-/* MENÚ HAMBURGUESA MEJORADO CON ANIMACIÓN */
+/* MENÚ HAMBURGUESA VISIBLE EN TODAS LAS PANTALLAS */
 .menu-hamburguesa {
-  display: none;
+  display: flex;
   background: transparent;
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.25);
   cursor: pointer;
   padding: 0.6rem;
   flex-direction: column;
@@ -121,7 +122,7 @@ h1, h2, h3, h4, .btn-filtro {
 
 .menu-hamburguesa .barra {
   display: block;
-  width: 26px;
+  width: 24px;
   height: 3px;
   background-color: var(--color-blanco);
   border-radius: 3px;
@@ -142,23 +143,36 @@ h1, h2, h3, h4, .btn-filtro {
   transform: translateY(-8px) rotate(-45deg);
 }
 
-/* ================== NAVEGACIÓN ================== */
+/* NAVEGACIÓN DESPLEGABLE TIPO HAMBURGUESA - NO SE PISA CON LA SECCIÓN BANCOS */
 .nav-principal {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
   background-color: var(--color-blanco);
-  border-bottom: 1px solid var(--color-borde);
-  position: sticky;
-  top: 0;
-  z-index: 90;
-  box-shadow: var(--sombra-sm);
+  border-bottom: 2px solid var(--color-primario);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.18);
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  visibility: hidden;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 990;
+}
+
+.nav-principal.show {
+  max-height: 600px;
+  opacity: 1;
+  visibility: visible;
 }
 
 .nav-contenedor {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0.75rem 1.5rem;
+  padding: 1.25rem 1.5rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.65rem;
   justify-content: center;
 }
 
@@ -166,15 +180,15 @@ h1, h2, h3, h4, .btn-filtro {
   background: var(--color-blanco);
   border: 1px solid var(--color-borde);
   color: var(--color-texto);
-  padding: 0.5rem 1rem;
+  padding: 0.6rem 1.1rem;
   border-radius: 30px;
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   font-weight: 600;
   cursor: pointer;
   transition: var(--transicion);
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.5rem;
 }
 
 .btn-filtro:hover,
@@ -195,9 +209,9 @@ h1, h2, h3, h4, .btn-filtro {
 .resalto {
   background-color: var(--color-secundario);
   color: #856404;
-  padding: 0.15rem 0.45rem;
+  padding: 0.15rem 0.55rem;
   border-radius: 12px;
-  font-size: 0.75rem;
+  font-size: 0.78rem;
   font-weight: 700;
 }
 
@@ -266,7 +280,6 @@ h1, h2, h3, h4, .btn-filtro {
   transform: scale(0.8);
 }
 
-/* ESTILOS RESALTADO BUSCADOR INTELIGENTE */
 .resaltado-temporal {
   background-color: #FEF3C7 !important;
   transition: background-color 0.3s ease;
@@ -285,7 +298,7 @@ h1, h2, h3, h4, .btn-filtro {
 .contenedor-principal {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 1rem 1.5rem 4rem;
+  padding: 1rem 1.5rem 3rem;
   flex: 1;
   width: 100%;
 }
@@ -350,7 +363,7 @@ h1, h2, h3, h4, .btn-filtro {
   margin-bottom: 0.5rem;
 }
 
-/* ================== TARJETAS DE REGIÓN ================== */
+/* ================== TARJETAS DE REGIÓN Y GRADOS EN H2 ================== */
 .tarjeta-region {
   background: var(--color-blanco);
   border-radius: var(--radio-borde);
@@ -404,7 +417,23 @@ h1, h2, h3, h4, .btn-filtro {
 .info-region h2 {
   font-size: 1.75rem;
   color: var(--color-primario);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.6rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.badge-grados {
+  display: inline-block;
+  background-color: var(--color-secundario);
+  color: #78350F;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.25rem 0.85rem;
+  border-radius: 20px;
+  box-shadow: var(--sombra-sm);
+  letter-spacing: 0.5px;
 }
 
 .ubicacion-tag, .ubicacion-badge {
@@ -598,17 +627,17 @@ h1, h2, h3, h4, .btn-filtro {
 /* ================== BOTÓN FLOTANTE FIJO CALCULADORA ================== */
 .btn-flotante-calculadora {
   position: fixed;
-  bottom: 2rem;
-  right: 2rem;
+  bottom: 1.5rem;
+  right: 1.5rem;
   background: linear-gradient(135deg, var(--color-primario-oscuro), var(--color-primario));
   color: var(--color-blanco);
   border: none;
   border-radius: 50px;
-  padding: 0.9rem 1.4rem;
+  padding: 0.85rem 1.3rem;
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  font-size: 1rem;
+  gap: 0.55rem;
+  font-size: 0.95rem;
   font-weight: 700;
   cursor: pointer;
   box-shadow: 0 8px 20px rgba(211, 47, 47, 0.45);
@@ -636,7 +665,7 @@ h1, h2, h3, h4, .btn-filtro {
 }
 
 .icono-flotante {
-  font-size: 1.3rem;
+  font-size: 1.25rem;
 }
 
 .badge-fichos {
@@ -904,17 +933,19 @@ h1, h2, h3, h4, .btn-filtro {
   pointer-events: none;
 }
 
-/* ================== PIE DE PÁGINA ================== */
+/* ================== PIE DE PÁGINA (ESPACIADO PARA NO QUEDAR CUBIERTO POR BOTÓN FLOTANTE) ================== */
 .pie-pagina {
   background-color: #111827;
   color: #F9FAFB;
   text-align: center;
-  padding: 2.5rem 1.5rem;
+  padding: 3rem 1.5rem 6.5rem;
   margin-top: auto;
+  position: relative;
+  z-index: 10;
 }
 
 .footer-contenido {
-  max-width: 1200px;
+  max-width: 800px;
   margin: 0 auto;
 }
 
@@ -928,37 +959,6 @@ h1, h2, h3, h4, .btn-filtro {
 @media (max-width: 768px) {
   .header-contenido {
     flex-wrap: wrap;
-  }
-
-  .menu-hamburguesa {
-    display: flex;
-  }
-
-  .nav-principal {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background-color: var(--color-blanco);
-    border-bottom: 2px solid var(--color-primario);
-    box-shadow: var(--sombra-lg);
-  }
-
-  .nav-principal.show {
-    display: block;
-    animation: slideDown 0.25s ease-out;
-  }
-
-  @keyframes slideDown {
-    from {
-      opacity: 0;
-      transform: translateY(-10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
   }
 
   .nav-contenedor {
@@ -983,6 +983,10 @@ h1, h2, h3, h4, .btn-filtro {
     width: 100%;
   }
 
+  .info-region h2 {
+    font-size: 1.5rem;
+  }
+
   .tabla-productos th,
   .tabla-productos td {
     padding: 0.65rem 0.65rem;
@@ -1003,7 +1007,7 @@ h1, h2, h3, h4, .btn-filtro {
   .toast-notificacion {
     left: 1.25rem;
     right: 1.25rem;
-    bottom: 5rem;
+    bottom: 5.5rem;
     justify-content: center;
   }
 }
