@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 240" width="100%" height="100%">
+  <!-- Outer stroke / shadow -->
+  <defs>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFE082"/>
+      <stop offset="50%" stop-color="#FFC107"/>
+      <stop offset="100%" stop-color="#FF8F00"/>
+    </linearGradient>
+    <linearGradient id="red" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#E53935"/>
+      <stop offset="100%" stop-color="#B71C1C"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Crown -->
+  <g id="crown">
+    <path d="M 30,60 Q 100,50 170,60 L 180,25 L 145,42 L 100,15 L 55,42 L 20,25 Z" fill="url(#gold)" stroke="#2D1A00" stroke-width="3"/>
+    <!-- Crown jewels / details -->
+    <circle cx="100" cy="22" r="5" fill="#E53935" stroke="#2D1A00" stroke-width="1.5"/>
+    <circle cx="23" cy="30" r="4" fill="#E53935" stroke="#2D1A00" stroke-width="1.5"/>
+    <circle cx="177" cy="30" r="4" fill="#E53935" stroke="#2D1A00" stroke-width="1.5"/>
+    <polygon points="100,32 93,42 107,42" fill="#E53935"/>
+    <polygon points="55,48 50,54 60,54" fill="#E53935"/>
+    <polygon points="145,48 140,54 150,54" fill="#E53935"/>
+    <rect x="35" y="52" width="130" height="8" rx="2" fill="url(#gold)" stroke="#2D1A00" stroke-width="2"/>
+  </g>
+
+  <!-- Shield Outer Frame -->
+  <path d="M 20,65 L 180,65 L 180,180 Q 180,225 100,235 Q 20,225 20,180 Z" fill="url(#gold)" stroke="#1A1A1A" stroke-width="4"/>
+
+  <!-- Shield Inner Area -->
+  <path d="M 28,73 L 172,73 L 172,176 Q 172,216 100,225 Q 28,216 28,176 Z" fill="#FFFFFF" stroke="#2D1A00" stroke-width="2"/>
+
+  <!-- Upper Red Banner with Cross -->
+  <rect x="32" y="77" width="136" height="52" fill="url(#red)" stroke="#2D1A00" stroke-width="2"/>
+  <!-- Cross Pattee / Cross -->
+  <g transform="translate(100, 103)">
+    <path d="M -8,-8 L -18,-18 L -8,-18 L 0,-8 L 8,-18 L 18,-18 L 8,-8 L 18,0 L 18,8 L 8,8 L 18,18 L 8,18 L 0,8 L -8,18 L -18,18 L -8,8 L -18,8 L -18,0 Z" fill="url(#gold)" stroke="#2D1A00" stroke-width="1.5"/>
+    <circle cx="0" cy="0" r="3" fill="#B71C1C"/>
+  </g>
+
+  <!-- Lower Red Stripes and Gold Pillars -->
+  <g id="bars">
+    <!-- Red Background area for lower shield -->
+    <path d="M 32,133 L 168,133 L 168,174 Q 168,210 100,219 Q 32,210 32,174 Z" fill="url(#red)"/>
+    
+    <!-- Vertical Gold Columns -->
+    <rect x="32" y="133" width="16" height="42" fill="url(#gold)" stroke="#2D1A00" stroke-width="1.5"/>
+    <rect x="68" y="133" width="16" height="52" fill="url(#gold)" stroke="#2D1A00" stroke-width="1.5"/>
+    <rect x="116" y="133" width="16" height="52" fill="url(#gold)" stroke="#2D1A00" stroke-width="1.5"/>
+    <rect x="152" y="133" width="16" height="42" fill="url(#gold)" stroke="#2D1A00" stroke-width="1.5"/>
+  </g>
+</svg>
