@@ -1,6 +1,0 @@
-{
-  "name": "Día de la Antioqueñidad - Catálogo y Fichos",
-  "description": "Catálogo interactivo de productos por municipio, grados y zonas de Antioquia, con calculadora de fichos en tiempo real.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
