@@ -1,4 +1,4 @@
-/* ================== BASE DE PRODUCTOS Y CATALOGO ================== */
+/* ================== BASE DE PRODUCTOS Y CATÁLOGO ================== */
 const CATALOGO_PRODUCTOS = [
   { nombre: "Limón", precio: 7000 },
   { nombre: "Maracuyá", precio: 7000 },
@@ -64,8 +64,16 @@ const CATALOGO_PRODUCTOS = [
 ];
 
 let listaCalculadora = [];
+let resultadosBusqueda = [];
+let indiceResultadoActual = -1;
+let timeoutToast = null;
 
-/* ================== FUNCIONALIDAD DE FILTRADO (CONSERVADA Y AMPLIADA) ================== */
+/* ================== UTILIDADES Y FORMATEO ================== */
+function formatearMoneda(valor) {
+  return "$" + valor.toLocaleString('es-CO');
+}
+
+/* ================== FUNCIONALIDAD DE FILTRADO ================== */
 function filtrar(categoria, botonClickeado = null) {
   const secciones = document.querySelectorAll('.seccion');
   
@@ -83,58 +91,209 @@ function filtrar(categoria, botonClickeado = null) {
   if (botonClickeado) {
     botonClickeado.classList.add('activo');
   } else if (botones.length > 0) {
-    const btnActivo = Array.from(botones).find(b => b.getAttribute('onclick').includes(categoria));
+    const btnActivo = Array.from(botones).find(b => b.getAttribute('onclick') && b.getAttribute('onclick').includes(categoria));
     if (btnActivo) btnActivo.classList.add('activo');
   }
 }
 
-/* ================== BUSCADOR MEJORADO (TABLAS + TARJETAS DE PRODUCTO) ================== */
-document.getElementById('buscador').addEventListener('input', function(e) {
-  const texto = e.target.value.toLowerCase().trim();
-  
-  // Filtrar en tablas (> 3 productos)
-  const filas = document.querySelectorAll('.tabla-productos tbody tr:not(.fila-vacia)');
-  filas.forEach(fila => {
-    const contenidoFila = fila.textContent.toLowerCase();
-    fila.style.display = contenidoFila.includes(texto) ? '' : 'none';
+/* ================== BUSCADOR INTELIGENTE ================== */
+function inicializarBuscadorInteligente() {
+  const inputBuscador = document.getElementById('buscador');
+  const contadorElem = document.getElementById('contador-busqueda');
+  if (!inputBuscador) return;
+
+  function limpiarResaltados() {
+    document.querySelectorAll('.item-searchable').forEach(elem => {
+      elem.classList.remove('resaltado-temporal', 'resaltado-activo');
+    });
+    resultadosBusqueda = [];
+    indiceResultadoActual = -1;
+    if (contadorElem) {
+      contadorElem.classList.add('oculto');
+      contadorElem.textContent = "0/0";
+    }
+  }
+
+  function resaltarCoincidenciaActiva() {
+    document.querySelectorAll('.resaltado-activo').forEach(el => el.classList.remove('resaltado-activo'));
+    if (resultadosBusqueda.length > 0 && indiceResultadoActual >= 0) {
+      const actual = resultadosBusqueda[indiceResultadoActual];
+      actual.classList.add('resaltado-activo');
+      actual.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      if (contadorElem) {
+        contadorElem.classList.remove('oculto');
+        contadorElem.textContent = `${indiceResultadoActual + 1}/${resultadosBusqueda.length}`;
+      }
+    }
+  }
+
+  inputBuscador.addEventListener('input', (e) => {
+    const query = e.target.value.toLowerCase().trim();
+    limpiarResaltados();
+
+    if (!query) return;
+
+    const elementos = document.querySelectorAll('.item-searchable');
+    elementos.forEach(elem => {
+      const textoInterno = elem.textContent.toLowerCase();
+      const region = (elem.getAttribute('data-region') || '').toLowerCase();
+      const categoria = (elem.getAttribute('data-categoria') || '').toLowerCase();
+
+      if (textoInterno.includes(query) || region.includes(query) || categoria.includes(query)) {
+        elem.classList.add('resaltado-temporal');
+        resultadosBusqueda.push(elem);
+      }
+    });
+
+    if (resultadosBusqueda.length > 0) {
+      indiceResultadoActual = 0;
+      resaltarCoincidenciaActiva();
+    }
   });
 
-  // Filtrar en tarjetas de producto (<= 3 productos)
-  const tarjetasProducto = document.querySelectorAll('.tarjeta-producto.item-searchable');
-  tarjetasProducto.forEach(tarjeta => {
-    const contenidoTarjeta = tarjeta.textContent.toLowerCase();
-    tarjeta.style.display = contenidoTarjeta.includes(texto) ? '' : 'none';
+  inputBuscador.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && resultadosBusqueda.length > 0) {
+      e.preventDefault();
+      indiceResultadoActual = (indiceResultadoActual + 1) % resultadosBusqueda.length;
+      resaltarCoincidenciaActiva();
+    } else if (e.key === 'Escape') {
+      inputBuscador.value = '';
+      limpiarResaltados();
+      inputBuscador.blur();
+    }
   });
-});
+}
 
 /* ================== NAVEGACIÓN MÓVIL (MENÚ HAMBURGUESA) ================== */
-const menuBtn = document.getElementById('menu-btn');
-const menuNav = document.getElementById('menu-nav');
+function inicializarMenuHamburguesa() {
+  const menuBtn = document.getElementById('menu-btn');
+  const menuNav = document.getElementById('menu-nav');
 
-if (menuBtn && menuNav) {
-  menuBtn.addEventListener('click', () => {
+  if (!menuBtn || !menuNav) return;
+
+  function cerrarMenu() {
+    menuNav.classList.remove('show');
+    menuBtn.classList.remove('activo');
+    menuBtn.setAttribute('aria-expanded', 'false');
+  }
+
+  function abrirMenu() {
+    menuNav.classList.add('show');
+    menuBtn.classList.add('activo');
+    menuBtn.setAttribute('aria-expanded', 'true');
+  }
+
+  menuBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
     const expandido = menuBtn.getAttribute('aria-expanded') === 'true';
-    menuBtn.setAttribute('aria-expanded', !expandido);
-    menuNav.classList.toggle('show');
+    if (expandido) {
+      cerrarMenu();
+    } else {
+      abrirMenu();
+    }
   });
 
-  const menuButtons = menuNav.querySelectorAll('button');
-  menuButtons.forEach(btn => {
+  menuNav.querySelectorAll('button').forEach(btn => {
     btn.addEventListener('click', () => {
-      menuNav.classList.remove('show');
-      menuBtn.setAttribute('aria-expanded', 'false');
+      cerrarMenu();
     });
   });
+
+  document.addEventListener('click', (e) => {
+    if (!menuNav.contains(e.target) && !menuBtn.contains(e.target) && menuNav.classList.contains('show')) {
+      cerrarMenu();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menuNav.classList.contains('show')) {
+      cerrarMenu();
+    }
+  });
 }
 
-/* ================== CALCULADORA DE FICHOS ================== */
-function formatearMoneda(valor) {
-  return "$" + valor.toLocaleString('es-CO');
+/* ================== CALCULADORA Y MODAL FLOTANTE ================== */
+function inicializarModalCalculadora() {
+  const btnFlotante = document.getElementById('btn-flotante-calculadora');
+  const panel = document.getElementById('panel-calculadora');
+  const backdrop = document.getElementById('backdrop-calculadora');
+  const btnCerrar = document.getElementById('btn-cerrar-calculadora');
+
+  if (!btnFlotante || !panel || !backdrop || !btnCerrar) return;
+
+  function alternarModal(abrir) {
+    if (abrir) {
+      panel.classList.add('abierto');
+      backdrop.classList.add('visible');
+      panel.setAttribute('aria-hidden', 'false');
+      backdrop.setAttribute('aria-hidden', 'false');
+    } else {
+      panel.classList.remove('abierto');
+      backdrop.classList.remove('visible');
+      panel.setAttribute('aria-hidden', 'true');
+      backdrop.setAttribute('aria-hidden', 'true');
+    }
+  }
+
+  btnFlotante.addEventListener('click', () => {
+    const estaAbierto = panel.classList.contains('abierto');
+    alternarModal(!estaAbierto);
+  });
+
+  btnCerrar.addEventListener('click', () => alternarModal(false));
+  backdrop.addEventListener('click', () => alternarModal(false));
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && panel.classList.contains('abierto')) {
+      alternarModal(false);
+    }
+  });
 }
 
-function inicializarCalculadora() {
+function mostrarFeedbackAgregado(nombreProducto) {
+  const toast = document.getElementById('toast-notificacion');
+  const msg = document.getElementById('toast-mensaje');
+  const btnFlotante = document.getElementById('btn-flotante-calculadora');
+
+  if (btnFlotante) {
+    btnFlotante.classList.remove('animacion-pulso');
+    void btnFlotante.offsetWidth;
+    btnFlotante.classList.add('animacion-pulso');
+  }
+
+  if (toast && msg) {
+    msg.textContent = `${nombreProducto} agregado a la calculadora`;
+    toast.classList.remove('oculto');
+
+    if (timeoutToast) clearTimeout(timeoutToast);
+    timeoutToast = setTimeout(() => {
+      toast.classList.add('oculto');
+    }, 2500);
+  }
+}
+
+function agregarAlCalculo(nombre, precio, cantidad = 1) {
+  const itemExistente = listaCalculadora.find(item => item.nombre === nombre);
+
+  if (itemExistente) {
+    itemExistente.cantidad += cantidad;
+  } else {
+    listaCalculadora.push({
+      nombre: nombre,
+      precio: Number(precio),
+      cantidad: Number(cantidad)
+    });
+  }
+
+  actualizarTablaCalculadora();
+  mostrarFeedbackAgregado(nombre);
+}
+
+function inicializarSelectorCalculadora() {
   const selectProducto = document.getElementById('select-producto');
   if (!selectProducto) return;
+
+  selectProducto.innerHTML = '<option value="" disabled selected>-- Elige un producto --</option>';
 
   CATALOGO_PRODUCTOS.forEach((item, index) => {
     const opcion = document.createElement('option');
@@ -146,31 +305,35 @@ function inicializarCalculadora() {
   const btnAgregar = document.getElementById('btn-agregar-calculadora');
   const inputCantidad = document.getElementById('input-cantidad');
 
-  btnAgregar.addEventListener('click', () => {
-    const indiceSeleccionado = selectProducto.value;
-    const cantidad = parseInt(inputCantidad.value, 10);
+  if (btnAgregar && inputCantidad) {
+    btnAgregar.addEventListener('click', () => {
+      const indiceSeleccionado = selectProducto.value;
+      const cantidad = parseInt(inputCantidad.value, 10);
 
-    if (indiceSeleccionado === "" || isNaN(cantidad) || cantidad < 1) {
-      alert("Por favor selecciona un producto y una cantidad válida.");
-      return;
+      if (indiceSeleccionado === "" || isNaN(cantidad) || cantidad < 1) {
+        alert("Por favor selecciona un producto y una cantidad válida.");
+        return;
+      }
+
+      const producto = CATALOGO_PRODUCTOS[indiceSeleccionado];
+      agregarAlCalculo(producto.nombre, producto.precio, cantidad);
+
+      inputCantidad.value = 1;
+      selectProducto.selectedIndex = 0;
+    });
+  }
+}
+
+function inicializarBotonesAgregarRapido() {
+  document.addEventListener('click', (e) => {
+    const boton = e.target.closest('.btn-agregar-rapido');
+    if (boton) {
+      const nombre = boton.getAttribute('data-nombre');
+      const precio = boton.getAttribute('data-precio');
+      if (nombre && precio) {
+        agregarAlCalculo(nombre, precio, 1);
+      }
     }
-
-    const producto = CATALOGO_PRODUCTOS[indiceSeleccionado];
-    const itemExistente = listaCalculadora.find(item => item.nombre === producto.nombre);
-
-    if (itemExistente) {
-      itemExistente.cantidad += cantidad;
-    } else {
-      listaCalculadora.push({
-        nombre: producto.nombre,
-        precio: producto.precio,
-        cantidad: cantidad
-      });
-    }
-
-    inputCantidad.value = 1;
-    selectProducto.selectedIndex = 0;
-    actualizarTablaCalculadora();
   });
 }
 
@@ -218,7 +381,9 @@ function actualizarTablaCalculadora() {
         listaCalculadora[idx].cantidad = nuevaCantidad;
         actualizarTotales();
         const subtotalCelda = e.target.closest('tr').querySelectorAll('td')[3];
-        subtotalCelda.textContent = formatearMoneda(listaCalculadora[idx].precio * listaCalculadora[idx].cantidad);
+        if (subtotalCelda) {
+          subtotalCelda.textContent = formatearMoneda(listaCalculadora[idx].precio * listaCalculadora[idx].cantidad);
+        }
       }
     });
   });
@@ -239,20 +404,32 @@ function actualizarTotales() {
   const totalCantidadElem = document.getElementById('total-cantidad-items');
   const totalValorElem = document.getElementById('total-valor-estimado');
   const totalFichosElem = document.getElementById('total-fichos-estimados');
-
-  if (!totalCantidadElem || !totalValorElem || !totalFichosElem) return;
+  const badgeFichos = document.getElementById('badge-fichos');
 
   const totalCantidad = listaCalculadora.reduce((sum, item) => sum + item.cantidad, 0);
   const totalValor = listaCalculadora.reduce((sum, item) => sum + (item.precio * item.cantidad), 0);
   const fichosEstimados = Math.ceil(totalValor / 1000);
 
-  totalCantidadElem.textContent = totalCantidad;
-  totalValorElem.textContent = formatearMoneda(totalValor);
-  totalFichosElem.textContent = `${fichosEstimados.toLocaleString('es-CO')} fichos`;
+  if (totalCantidadElem) totalCantidadElem.textContent = totalCantidad;
+  if (totalValorElem) totalValorElem.textContent = formatearMoneda(totalValor);
+  if (totalFichosElem) totalFichosElem.textContent = `${fichosEstimados.toLocaleString('es-CO')} fichos`;
+
+  if (badgeFichos) {
+    if (fichosEstimados > 0) {
+      badgeFichos.textContent = fichosEstimados;
+      badgeFichos.classList.remove('oculto');
+    } else {
+      badgeFichos.classList.add('oculto');
+    }
+  }
 }
 
 /* ================== INICIALIZACIÓN GENERAL ================== */
 document.addEventListener('DOMContentLoaded', () => {
-  inicializarCalculadora();
+  inicializarMenuHamburguesa();
+  inicializarBuscadorInteligente();
+  inicializarModalCalculadora();
+  inicializarSelectorCalculadora();
+  inicializarBotonesAgregarRapido();
   filtrar('todos');
 });

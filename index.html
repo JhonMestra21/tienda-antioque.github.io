@@ -38,14 +38,14 @@
       <button onclick="filtrar('tamales', this)" class="btn-filtro">Rionegro <span class="resalto">5° - 9°</span></button>
       <button onclick="filtrar('cazuelas', this)" class="btn-filtro">Santa Fé de Antioquia <span class="resalto">10° - Pre°</span></button>
       <button onclick="filtrar('bancos', this)" class="btn-filtro">Bancos y Fichos</button>
-      <button onclick="filtrar('calculadora', this)" class="btn-filtro btn-calculadora-nav">🧮 Calculadora de Fichos</button>
     </div>
   </nav>
 
   <div class="contenedor-buscador">
     <div class="barra-busqueda">
       <span class="icono-lupa" aria-hidden="true">🔍</span>
-      <input type="search" id="buscador" placeholder="Buscar producto, región o precio..." aria-label="Buscar productos">
+      <input type="search" id="buscador" placeholder="Buscar producto, región, categoría o precio... (Enter para navegar)" aria-label="Buscar productos">
+      <span id="contador-busqueda" class="contador-busqueda oculto">0/0</span>
     </div>
   </div>
 
@@ -75,72 +75,6 @@
       </div>
     </section>
 
-    <!-- CALCULADORA DE FICHOS -->
-    <section class="seccion calculadora" style="display:block;">
-      <div class="tarjeta-region tarjeta-calculadora">
-        <div class="encabezado-region">
-          <div class="info-region">
-            <h2>🧮 Calculadora de Fichos</h2>
-            <span class="ubicacion-tag">Herramienta de Planificación</span>
-          </div>
-        </div>
-        <p class="texto-guia">Selecciona los productos que deseas adquirir para calcular el total a pagar y la cantidad estimada de fichos que debes comprar en el banco.</p>
-        
-        <div class="calculadora-grid">
-          <div class="calculadora-controles">
-            <div class="campo-calculadora">
-              <label for="select-producto">1. Selecciona un producto:</label>
-              <select id="select-producto" class="select-moderno">
-                <option value="" disabled selected>-- Elige un producto --</option>
-              </select>
-            </div>
-            <div class="campo-calculadora">
-              <label for="input-cantidad">2. Cantidad:</label>
-              <input type="number" id="input-cantidad" class="input-moderno" min="1" value="1">
-            </div>
-            <button id="btn-agregar-calculadora" class="btn-primario">+ Agregar a la lista</button>
-          </div>
-
-          <div class="calculadora-resumen">
-            <h3>Lista de Compra</h3>
-            <div class="tabla-contenedor">
-              <table class="tabla-productos" id="tabla-items-calculadora">
-                <thead>
-                  <tr>
-                    <th>Producto</th>
-                    <th class="col-precio">Precio Unit.</th>
-                    <th class="col-precio">Cant.</th>
-                    <th class="col-precio">Subtotal</th>
-                    <th>Acción</th>
-                  </tr>
-                </thead>
-                <tbody id="tbody-calculadora">
-                  <tr class="fila-vacia">
-                    <td colspan="5">Aún no has agregado productos a tu cálculo.</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            <div class="panel-totales">
-              <div class="total-item">
-                <span>Cantidad total de productos:</span>
-                <strong id="total-cantidad-items">0</strong>
-              </div>
-              <div class="total-item">
-                <span>Valor Total Estimado:</span>
-                <strong id="total-valor-estimado" class="resaltado-monto">$0</strong>
-              </div>
-              <div class="total-item destacado">
-                <span>Número aproximado de fichos ($1.000 c/u):</span>
-                <strong id="total-fichos-estimados">0 fichos</strong>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- RIONEGRO -->
     <section class="seccion asados">
       <article class="tarjeta-region">
@@ -164,28 +98,34 @@
                 <tr>
                   <th>Producto</th>
                   <th class="col-precio">Precio</th>
+                  <th class="col-accion">Acción</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
+                <tr class="item-searchable" data-region="Rionegro" data-categoria="Postres">
                   <td>Limón</td>
                   <td class="precio">$7.000</td>
+                  <td class="col-accion"><button class="btn-agregar-rapido" data-nombre="Limón" data-precio="7000">+ Agregar</button></td>
                 </tr>
-                <tr>
+                <tr class="item-searchable" data-region="Rionegro" data-categoria="Postres">
                   <td>Maracuyá</td>
                   <td class="precio">$7.000</td>
+                  <td class="col-accion"><button class="btn-agregar-rapido" data-nombre="Maracuyá" data-precio="7000">+ Agregar</button></td>
                 </tr>
-                <tr>
+                <tr class="item-searchable" data-region="Rionegro" data-categoria="Postres">
                   <td>Leche asada</td>
                   <td class="precio">$7.000</td>
+                  <td class="col-accion"><button class="btn-agregar-rapido" data-nombre="Leche asada" data-precio="7000">+ Agregar</button></td>
                 </tr>
-                <tr>
+                <tr class="item-searchable" data-region="Rionegro" data-categoria="Postres">
                   <td>Arroz con leche</td>
                   <td class="precio">$7.000</td>
+                  <td class="col-accion"><button class="btn-agregar-rapido" data-nombre="Arroz con leche" data-precio="7000">+ Agregar</button></td>
                 </tr>
-                <tr>
+                <tr class="item-searchable" data-region="Rionegro" data-categoria="Postres">
                   <td>Leche Klim</td>
                   <td class="precio">$7.000</td>
+                  <td class="col-accion"><button class="btn-agregar-rapido" data-nombre="Leche Klim" data-precio="7000">+ Agregar</button></td>
                 </tr>
               </tbody>
             </table>
@@ -196,25 +136,28 @@
         <div class="bloque-categoria">
           <h3>Bebidas Frías</h3>
           <div class="grid-productos-tarjetas">
-            <div class="tarjeta-producto item-searchable">
+            <div class="tarjeta-producto item-searchable" data-region="Rionegro" data-categoria="Bebidas Frías">
               <img src="" alt="">
               <div class="info-producto">
                 <h4 class="nombre-producto">Agua 350ml</h4>
                 <span class="precio">$2.000</span>
+                <button class="btn-agregar-rapido btn-agregar-tarjeta" data-nombre="Agua 350ml" data-precio="2000">+ Agregar</button>
               </div>
             </div>
-            <div class="tarjeta-producto item-searchable">
+            <div class="tarjeta-producto item-searchable" data-region="Rionegro" data-categoria="Bebidas Frías">
               <img src="" alt="">
               <div class="info-producto">
                 <h4 class="nombre-producto">Avena</h4>
                 <span class="precio">$2.500</span>
+                <button class="btn-agregar-rapido btn-agregar-tarjeta" data-nombre="Avena" data-precio="2500">+ Agregar</button>
               </div>
             </div>
-            <div class="tarjeta-producto item-searchable">
+            <div class="tarjeta-producto item-searchable" data-region="Rionegro" data-categoria="Bebidas Frías">
               <img src="" alt="">
               <div class="info-producto">
                 <h4 class="nombre-producto">Granizados de tamarindo y bon bon bum</h4>
                 <span class="precio">$12.000</span>
+                <button class="btn-agregar-rapido btn-agregar-tarjeta" data-nombre="Granizados de tamarindo y bon bon bum" data-precio="12000">+ Agregar</button>
               </div>
             </div>
           </div>
@@ -224,25 +167,28 @@
         <div class="bloque-categoria">
           <h3>Bebidas Calientes</h3>
           <div class="grid-productos-tarjetas">
-            <div class="tarjeta-producto item-searchable">
+            <div class="tarjeta-producto item-searchable" data-region="Rionegro" data-categoria="Bebidas Calientes">
               <img src="" alt="">
               <div class="info-producto">
                 <h4 class="nombre-producto">Tinto</h4>
                 <span class="precio">$2.000</span>
+                <button class="btn-agregar-rapido btn-agregar-tarjeta" data-nombre="Tinto" data-precio="2000">+ Agregar</button>
               </div>
             </div>
-            <div class="tarjeta-producto item-searchable">
+            <div class="tarjeta-producto item-searchable" data-region="Rionegro" data-categoria="Bebidas Calientes">
               <img src="" alt="">
               <div class="info-producto">
                 <h4 class="nombre-producto">Aromática</h4>
                 <span class="precio">$2.000</span>
+                <button class="btn-agregar-rapido btn-agregar-tarjeta" data-nombre="Aromática" data-precio="2000">+ Agregar</button>
               </div>
             </div>
-            <div class="tarjeta-producto item-searchable">
+            <div class="tarjeta-producto item-searchable" data-region="Rionegro" data-categoria="Bebidas Calientes">
               <img src="" alt="">
               <div class="info-producto">
                 <h4 class="nombre-producto">Café + Instacrem</h4>
                 <span class="precio">$2.500</span>
+                <button class="btn-agregar-rapido btn-agregar-tarjeta" data-nombre="Café + Instacrem" data-precio="2500">+ Agregar</button>
               </div>
             </div>
           </div>
@@ -257,19 +203,20 @@
                 <tr>
                   <th>Producto</th>
                   <th class="col-precio">Precio</th>
+                  <th class="col-accion">Acción</th>
                 </tr>
               </thead>
               <tbody>
-                <tr><td>Crispetas</td><td class="precio">$3.000</td></tr>
-                <tr><td>Aritos de Limón</td><td class="precio">$3.000</td></tr>
-                <tr><td>Churros de arequipe</td><td class="precio">$2.500</td></tr>
-                <tr><td>Buñuelos</td><td class="precio">$2.000</td></tr>
-                <tr><td>Palito Hojaldrado de Queso</td><td class="precio">$3.500</td></tr>
-                <tr><td>Pastel Hawaiano</td><td class="precio">$4.500</td></tr>
-                <tr><td>Pastel de Jamón y Queso</td><td class="precio">$4.500</td></tr>
-                <tr><td>Pastel de Arequipe</td><td class="precio">$3.500</td></tr>
-                <tr><td>Pastel de Guayaba</td><td class="precio">$3.500</td></tr>
-                <tr><td>Pastel de Pollo Frito</td><td class="precio">$3.500</td></tr>
+                <tr class="item-searchable" data-region="Rionegro" data-categoria="Productos de Panadería"><td>Crispetas</td><td class="precio">$3.000</td><td class="col-accion"><button class="btn-agregar-rapido" data-nombre="Crispetas" data-precio="3000">+ Agregar</button></td></tr>
+                <tr class="item-searchable" data-region="Rionegro" data-categoria="Productos de Panadería"><td>Aritos de Limón</td><td class="precio">$3.000</td><td class="col-accion"><button class="btn-agregar-rapido" data-nombre="Aritos de Limón" data-precio="3000">+ Agregar</button></td></tr>
+                <tr class="item-searchable" data-region="Rionegro" data-categoria="Productos de Panadería"><td>Churros de arequipe</td><td class="precio">$2.500</td><td class="col-accion"><button class="btn-agregar-rapido" data-nombre="Churros de arequipe" data-precio="2500">+ Agregar</button></td></tr>
+                <tr class="item-searchable" data-region="Rionegro" data-categoria="Productos de Panadería"><td>Buñuelos</td><td class="precio">$2.000</td><td class="col-accion"><button class="btn-agregar-rapido" data-nombre="Buñuelos" data-precio="2000">+ Agregar</button></td></tr>
+                <tr class="item-searchable" data-region="Rionegro" data-categoria="Productos de Panadería"><td>Palito Hojaldrado de Queso</td><td class="precio">$3.500</td><td class="col-accion"><button class="btn-agregar-rapido" data-nombre="Palito Hojaldrado de Queso" data-precio="3500">+ Agregar</button></td></tr>
+                <tr class="item-searchable" data-region="Rionegro" data-categoria="Productos de Panadería"><td>Pastel Hawaiano</td><td class="precio">$4.500</td><td class="col-accion"><button class="btn-agregar-rapido" data-nombre="Pastel Hawaiano" data-precio="4500">+ Agregar</button></td></tr>
+                <tr class="item-searchable" data-region="Rionegro" data-categoria="Productos de Panadería"><td>Pastel de Jamón y Queso</td><td class="precio">$4.500</td><td class="col-accion"><button class="btn-agregar-rapido" data-nombre="Pastel de Jamón y Queso" data-precio="4500">+ Agregar</button></td></tr>
+                <tr class="item-searchable" data-region="Rionegro" data-categoria="Productos de Panadería"><td>Pastel de Arequipe</td><td class="precio">$3.500</td><td class="col-accion"><button class="btn-agregar-rapido" data-nombre="Pastel de Arequipe" data-precio="3500">+ Agregar</button></td></tr>
+                <tr class="item-searchable" data-region="Rionegro" data-categoria="Productos de Panadería"><td>Pastel de Guayaba</td><td class="precio">$3.500</td><td class="col-accion"><button class="btn-agregar-rapido" data-nombre="Pastel de Guayaba" data-precio="3500">+ Agregar</button></td></tr>
+                <tr class="item-searchable" data-region="Rionegro" data-categoria="Productos de Panadería"><td>Pastel de Pollo Frito</td><td class="precio">$3.500</td><td class="col-accion"><button class="btn-agregar-rapido" data-nombre="Pastel de Pollo Frito" data-precio="3500">+ Agregar</button></td></tr>
               </tbody>
             </table>
           </div>
@@ -284,30 +231,31 @@
                 <tr>
                   <th>Producto</th>
                   <th class="col-precio">Precio</th>
+                  <th class="col-accion">Acción</th>
                 </tr>
               </thead>
               <tbody>
-                <tr><td>Oka Loka</td><td class="precio">$4.000</td></tr>
-                <tr><td>Barrilete con nanos</td><td class="precio">$600</td></tr>
-                <tr><td>Fini Roller</td><td class="precio">$2.500</td></tr>
-                <tr><td>Bombón Barrilete</td><td class="precio">$800</td></tr>
-                <tr><td>Bon Bon Bum fresa y surtido</td><td class="precio">$800</td></tr>
-                <tr><td>Quipitos</td><td class="precio">$1.000</td></tr>
-                <tr><td>Trululu Fresasitas</td><td class="precio">$3.500</td></tr>
-                <tr><td>Trululu Oro</td><td class="precio">$3.500</td></tr>
-                <tr><td>Trululu con Nanos</td><td class="precio">$3.500</td></tr>
-                <tr><td>Candy Ring</td><td class="precio">$3.000</td></tr>
-                <tr><td>Mara Mango</td><td class="precio">$1.000</td></tr>
-                <tr><td>Barrilete Revolcón</td><td class="precio">$600</td></tr>
-                <tr><td>Choco Disk</td><td class="precio">$2.000</td></tr>
-                <tr><td>Trolli Gusanos</td><td class="precio">$3.500</td></tr>
-                <tr><td>Chocolatina Nikolo</td><td class="precio">$2.500</td></tr>
-                <tr><td>Candyranch Mango Biggie</td><td class="precio">$2.000</td></tr>
-                <tr><td>Mara Sandía</td><td class="precio">$1.000</td></tr>
-                <tr><td>Trulli Moriscos</td><td class="precio">$3.500</td></tr>
-                <tr><td>Gomitas Toy Story</td><td class="precio">$3.500</td></tr>
-                <tr><td>Chocolatina Muu</td><td class="precio">$1.500</td></tr>
-                <tr><td>Revolución Chique</td><td class="precio">$500</td></tr>
+                <tr class="item-searchable" data-region="Rionegro" data-categoria="Dulces"><td>Oka Loka</td><td class="precio">$4.000</td><td class="col-accion"><button class="btn-agregar-rapido" data-nombre="Oka Loka" data-precio="4000">+ Agregar</button></td></tr>
+                <tr class="item-searchable" data-region="Rionegro" data-categoria="Dulces"><td>Barrilete con nanos</td><td class="precio">$600</td><td class="col-accion"><button class="btn-agregar-rapido" data-nombre="Barrilete con nanos" data-precio="600">+ Agregar</button></td></tr>
+                <tr class="item-searchable" data-region="Rionegro" data-categoria="Dulces"><td>Fini Roller</td><td class="precio">$2.500</td><td class="col-accion"><button class="btn-agregar-rapido" data-nombre="Fini Roller" data-precio="2500">+ Agregar</button></td></tr>
+                <tr class="item-searchable" data-region="Rionegro" data-categoria="Dulces"><td>Bombón Barrilete</td><td class="precio">$800</td><td class="col-accion"><button class="btn-agregar-rapido" data-nombre="Bombón Barrilete" data-precio="800">+ Agregar</button></td></tr>
+                <tr class="item-searchable" data-region="Rionegro" data-categoria="Dulces"><td>Bon Bon Bum fresa y surtido</td><td class="precio">$800</td><td class="col-accion"><button class="btn-agregar-rapido" data-nombre="Bon Bon Bum fresa y surtido" data-precio="800">+ Agregar</button></td></tr>
+                <tr class="item-searchable" data-region="Rionegro" data-categoria="Dulces"><td>Quipitos</td><td class="precio">$1.000</td><td class="col-accion"><button class="btn-agregar-rapido" data-nombre="Quipitos" data-precio="1000">+ Agregar</button></td></tr>
+                <tr class="item-searchable" data-region="Rionegro" data-categoria="Dulces"><td>Trululu Fresasitas</td><td class="precio">$3.500</td><td class="col-accion"><button class="btn-agregar-rapido" data-nombre="Trululu Fresasitas" data-precio="3500">+ Agregar</button></td></tr>
+                <tr class="item-searchable" data-region="Rionegro" data-categoria="Dulces"><td>Trululu Oro</td><td class="precio">$3.500</td><td class="col-accion"><button class="btn-agregar-rapido" data-nombre="Trululu Oro" data-precio="3500">+ Agregar</button></td></tr>
+                <tr class="item-searchable" data-region="Rionegro" data-categoria="Dulces"><td>Trululu con Nanos</td><td class="precio">$3.500</td><td class="col-accion"><button class="btn-agregar-rapido" data-nombre="Trululu con Nanos" data-precio="3500">+ Agregar</button></td></tr>
+                <tr class="item-searchable" data-region="Rionegro" data-categoria="Dulces"><td>Candy Ring</td><td class="precio">$3.000</td><td class="col-accion"><button class="btn-agregar-rapido" data-nombre="Candy Ring" data-precio="3000">+ Agregar</button></td></tr>
+                <tr class="item-searchable" data-region="Rionegro" data-categoria="Dulces"><td>Mara Mango</td><td class="precio">$1.000</td><td class="col-accion"><button class="btn-agregar-rapido" data-nombre="Mara Mango" data-precio="1000">+ Agregar</button></td></tr>
+                <tr class="item-searchable" data-region="Rionegro" data-categoria="Dulces"><td>Barrilete Revolcón</td><td class="precio">$600</td><td class="col-accion"><button class="btn-agregar-rapido" data-nombre="Barrilete Revolcón" data-precio="600">+ Agregar</button></td></tr>
+                <tr class="item-searchable" data-region="Rionegro" data-categoria="Dulces"><td>Choco Disk</td><td class="precio">$2.000</td><td class="col-accion"><button class="btn-agregar-rapido" data-nombre="Choco Disk" data-precio="2000">+ Agregar</button></td></tr>
+                <tr class="item-searchable" data-region="Rionegro" data-categoria="Dulces"><td>Trolli Gusanos</td><td class="precio">$3.500</td><td class="col-accion"><button class="btn-agregar-rapido" data-nombre="Trolli Gusanos" data-precio="3500">+ Agregar</button></td></tr>
+                <tr class="item-searchable" data-region="Rionegro" data-categoria="Dulces"><td>Chocolatina Nikolo</td><td class="precio">$2.500</td><td class="col-accion"><button class="btn-agregar-rapido" data-nombre="Chocolatina Nikolo" data-precio="2500">+ Agregar</button></td></tr>
+                <tr class="item-searchable" data-region="Rionegro" data-categoria="Dulces"><td>Candyranch Mango Biggie</td><td class="precio">$2.000</td><td class="col-accion"><button class="btn-agregar-rapido" data-nombre="Candyranch Mango Biggie" data-precio="2000">+ Agregar</button></td></tr>
+                <tr class="item-searchable" data-region="Rionegro" data-categoria="Dulces"><td>Mara Sandía</td><td class="precio">$1.000</td><td class="col-accion"><button class="btn-agregar-rapido" data-nombre="Mara Sandía" data-precio="1000">+ Agregar</button></td></tr>
+                <tr class="item-searchable" data-region="Rionegro" data-categoria="Dulces"><td>Trulli Moriscos</td><td class="precio">$3.500</td><td class="col-accion"><button class="btn-agregar-rapido" data-nombre="Trulli Moriscos" data-precio="3500">+ Agregar</button></td></tr>
+                <tr class="item-searchable" data-region="Rionegro" data-categoria="Dulces"><td>Gomitas Toy Story</td><td class="precio">$3.500</td><td class="col-accion"><button class="btn-agregar-rapido" data-nombre="Gomitas Toy Story" data-precio="3500">+ Agregar</button></td></tr>
+                <tr class="item-searchable" data-region="Rionegro" data-categoria="Dulces"><td>Chocolatina Muu</td><td class="precio">$1.500</td><td class="col-accion"><button class="btn-agregar-rapido" data-nombre="Chocolatina Muu" data-precio="1500">+ Agregar</button></td></tr>
+                <tr class="item-searchable" data-region="Rionegro" data-categoria="Dulces"><td>Revolución Chique</td><td class="precio">$500</td><td class="col-accion"><button class="btn-agregar-rapido" data-nombre="Revolución Chique" data-precio="500">+ Agregar</button></td></tr>
               </tbody>
             </table>
           </div>
@@ -332,11 +280,12 @@
         <!-- 1 producto (<= 3) -> Tarjeta de producto con <img> vacío -->
         <div class="bloque-categoria">
           <div class="grid-productos-tarjetas">
-            <div class="tarjeta-producto item-searchable">
+            <div class="tarjeta-producto item-searchable" data-region="Santa Fé de Antioquia" data-categoria="Comida Típica">
               <img src="" alt="">
               <div class="info-producto">
                 <h4 class="nombre-producto">Cazuela de Frijoles con Guandolo</h4>
                 <span class="precio">$22.000</span>
+                <button class="btn-agregar-rapido btn-agregar-tarjeta" data-nombre="Cazuela de Frijoles con Guandolo" data-precio="22000">+ Agregar</button>
               </div>
             </div>
           </div>
@@ -367,17 +316,18 @@
                 <tr>
                   <th>Producto</th>
                   <th class="col-precio">Precio</th>
+                  <th class="col-accion">Acción</th>
                 </tr>
               </thead>
               <tbody>
-                <tr><td>Perro Vegano</td><td class="precio">$10.000</td></tr>
-                <tr><td>Perro Tradicional</td><td class="precio">$14.000</td></tr>
-                <tr><td>Choriperro</td><td class="precio">$16.000</td></tr>
-                <tr><td>Hamburguesa Vegana y Tradicional</td><td class="precio">$18.000</td></tr>
-                <tr><td>Pincho de Chorizo de Ternera con Arepa</td><td class="precio">$10.000</td></tr>
-                <tr><td>Salchipapa Mediana con Gaseosa</td><td class="precio">$14.000</td></tr>
-                <tr><td>Salchipapa Grande con Gaseosa</td><td class="precio">$20.000</td></tr>
-                <tr><td>Granizados de Café y Coco</td><td class="precio">$12.000</td></tr>
+                <tr class="item-searchable" data-region="Urabá" data-categoria="Comidas Rápidas"><td>Perro Vegano</td><td class="precio">$10.000</td><td class="col-accion"><button class="btn-agregar-rapido" data-nombre="Perro Vegano" data-precio="10000">+ Agregar</button></td></tr>
+                <tr class="item-searchable" data-region="Urabá" data-categoria="Comidas Rápidas"><td>Perro Tradicional</td><td class="precio">$14.000</td><td class="col-accion"><button class="btn-agregar-rapido" data-nombre="Perro Tradicional" data-precio="14000">+ Agregar</button></td></tr>
+                <tr class="item-searchable" data-region="Urabá" data-categoria="Comidas Rápidas"><td>Choriperro</td><td class="precio">$16.000</td><td class="col-accion"><button class="btn-agregar-rapido" data-nombre="Choriperro" data-precio="16000">+ Agregar</button></td></tr>
+                <tr class="item-searchable" data-region="Urabá" data-categoria="Comidas Rápidas"><td>Hamburguesa Vegana y Tradicional</td><td class="precio">$18.000</td><td class="col-accion"><button class="btn-agregar-rapido" data-nombre="Hamburguesa Vegana y Tradicional" data-precio="18000">+ Agregar</button></td></tr>
+                <tr class="item-searchable" data-region="Urabá" data-categoria="Comidas Rápidas"><td>Pincho de Chorizo de Ternera con Arepa</td><td class="precio">$10.000</td><td class="col-accion"><button class="btn-agregar-rapido" data-nombre="Pincho de Chorizo de Ternera con Arepa" data-precio="10000">+ Agregar</button></td></tr>
+                <tr class="item-searchable" data-region="Urabá" data-categoria="Comidas Rápidas"><td>Salchipapa Mediana con Gaseosa</td><td class="precio">$14.000</td><td class="col-accion"><button class="btn-agregar-rapido" data-nombre="Salchipapa Mediana con Gaseosa" data-precio="14000">+ Agregar</button></td></tr>
+                <tr class="item-searchable" data-region="Urabá" data-categoria="Comidas Rápidas"><td>Salchipapa Grande con Gaseosa</td><td class="precio">$20.000</td><td class="col-accion"><button class="btn-agregar-rapido" data-nombre="Salchipapa Grande con Gaseosa" data-precio="20000">+ Agregar</button></td></tr>
+                <tr class="item-searchable" data-region="Urabá" data-categoria="Comidas Rápidas"><td>Granizados de Café y Coco</td><td class="precio">$12.000</td><td class="col-accion"><button class="btn-agregar-rapido" data-nombre="Granizados de Café y Coco" data-precio="12000">+ Agregar</button></td></tr>
               </tbody>
             </table>
           </div>
@@ -402,25 +352,28 @@
         <!-- 3 productos (<= 3) -> Tarjetas de productos con <img> vacío -->
         <div class="bloque-categoria">
           <div class="grid-productos-tarjetas">
-            <div class="tarjeta-producto item-searchable">
+            <div class="tarjeta-producto item-searchable" data-region="Santa Fé de Antioquia" data-categoria="Platos Fuertes">
               <img src="" alt="">
               <div class="info-producto">
                 <h4 class="nombre-producto">Fiambre Antioqueño</h4>
                 <span class="precio">$22.000</span>
+                <button class="btn-agregar-rapido btn-agregar-tarjeta" data-nombre="Fiambre Antioqueño" data-precio="22000">+ Agregar</button>
               </div>
             </div>
-            <div class="tarjeta-producto item-searchable">
+            <div class="tarjeta-producto item-searchable" data-region="Santa Fé de Antioquia" data-categoria="Platos Fuertes">
               <img src="" alt="">
               <div class="info-producto">
                 <h4 class="nombre-producto">Tamal</h4>
                 <span class="precio">$18.000</span>
+                <button class="btn-agregar-rapido btn-agregar-tarjeta" data-nombre="Tamal" data-precio="18000">+ Agregar</button>
               </div>
             </div>
-            <div class="tarjeta-producto item-searchable">
+            <div class="tarjeta-producto item-searchable" data-region="Santa Fé de Antioquia" data-categoria="Bebidas">
               <img src="" alt="">
               <div class="info-producto">
                 <h4 class="nombre-producto">Cola y Pola</h4>
                 <span class="precio">$5.000</span>
+                <button class="btn-agregar-rapido btn-agregar-tarjeta" data-nombre="Cola y Pola" data-precio="5000">+ Agregar</button>
               </div>
             </div>
           </div>
@@ -446,25 +399,28 @@
         <!-- 3 productos (<= 3) -> Tarjetas de productos con <img> vacío -->
         <div class="bloque-categoria">
           <div class="grid-productos-tarjetas">
-            <div class="tarjeta-producto item-searchable">
+            <div class="tarjeta-producto item-searchable" data-region="El Retiro" data-categoria="Antojos">
               <img src="" alt="">
               <div class="info-producto">
                 <h4 class="nombre-producto">Patacón</h4>
                 <span class="precio">$16.000</span>
+                <button class="btn-agregar-rapido btn-agregar-tarjeta" data-nombre="Patacón" data-precio="16000">+ Agregar</button>
               </div>
             </div>
-            <div class="tarjeta-producto item-searchable">
+            <div class="tarjeta-producto item-searchable" data-region="El Retiro" data-categoria="Antojos">
               <img src="" alt="">
               <div class="info-producto">
                 <h4 class="nombre-producto">Arepa</h4>
                 <span class="precio">$16.000</span>
+                <button class="btn-agregar-rapido btn-agregar-tarjeta" data-nombre="Arepa" data-precio="16000">+ Agregar</button>
               </div>
             </div>
-            <div class="tarjeta-producto item-searchable">
+            <div class="tarjeta-producto item-searchable" data-region="El Retiro" data-categoria="Bebidas">
               <img src="" alt="">
               <div class="info-producto">
                 <h4 class="nombre-producto">Cola y Pola</h4>
                 <span class="precio">$5.000</span>
+                <button class="btn-agregar-rapido btn-agregar-tarjeta" data-nombre="Cola y Pola" data-precio="5000">+ Agregar</button>
               </div>
             </div>
           </div>
@@ -489,11 +445,12 @@
         <!-- 1 producto (<= 3) -> Tarjeta de producto con <img> vacío -->
         <div class="bloque-categoria">
           <div class="grid-productos-tarjetas">
-            <div class="tarjeta-producto item-searchable">
+            <div class="tarjeta-producto item-searchable" data-region="San Pedro de los Milagros" data-categoria="Sopas">
               <img src="" alt="">
               <div class="info-producto">
                 <h4 class="nombre-producto">Sancocho Trifásico</h4>
                 <span class="precio">$25.000</span>
+                <button class="btn-agregar-rapido btn-agregar-tarjeta" data-nombre="Sancocho Trifásico" data-precio="25000">+ Agregar</button>
               </div>
             </div>
           </div>
@@ -523,13 +480,14 @@
                 <tr>
                   <th>Producto</th>
                   <th class="col-precio">Precio</th>
+                  <th class="col-accion">Acción</th>
                 </tr>
               </thead>
               <tbody>
-                <tr><td>Soda Saborizada</td><td class="precio">$10.000</td></tr>
-                <tr><td>Inflables</td><td class="precio">$6.000</td></tr>
-                <tr><td>Pintacaritas</td><td class="precio">$6.000</td></tr>
-                <tr><td>Estación de Pinturas</td><td class="precio">$6.000</td></tr>
+                <tr class="item-searchable" data-region="Independientes" data-categoria="Independientes"><td>Soda Saborizada</td><td class="precio">$10.000</td><td class="col-accion"><button class="btn-agregar-rapido" data-nombre="Soda Saborizada" data-precio="10000">+ Agregar</button></td></tr>
+                <tr class="item-searchable" data-region="Independientes" data-categoria="Independientes"><td>Inflables</td><td class="precio">$6.000</td><td class="col-accion"><button class="btn-agregar-rapido" data-nombre="Inflables" data-precio="6000">+ Agregar</button></td></tr>
+                <tr class="item-searchable" data-region="Independientes" data-categoria="Independientes"><td>Pintacaritas</td><td class="precio">$6.000</td><td class="col-accion"><button class="btn-agregar-rapido" data-nombre="Pintacaritas" data-precio="6000">+ Agregar</button></td></tr>
+                <tr class="item-searchable" data-region="Independientes" data-categoria="Independientes"><td>Estación de Pinturas</td><td class="precio">$6.000</td><td class="col-accion"><button class="btn-agregar-rapido" data-nombre="Estación de Pinturas" data-precio="6000">+ Agregar</button></td></tr>
               </tbody>
             </table>
           </div>
@@ -539,10 +497,90 @@
 
   </main>
 
+  <!-- PANEL FLOTANTE CALCULADORA DE FICHOS -->
+  <div id="backdrop-calculadora" class="backdrop-calculadora" aria-hidden="true"></div>
+  <aside id="panel-calculadora" class="panel-calculadora" aria-hidden="true" aria-labelledby="titulo-panel-calculadora">
+    <div class="encabezado-panel-calculadora">
+      <div class="info-header-modal">
+        <h2 id="titulo-panel-calculadora">🧮 Calculadora de Fichos</h2>
+        <span class="ubicacion-tag">Planificador Oficial</span>
+      </div>
+      <button id="btn-cerrar-calculadora" class="btn-cerrar-modal" aria-label="Cerrar calculadora">✕</button>
+    </div>
+
+    <div class="cuerpo-panel-calculadora">
+      <p class="texto-guia">Selecciona los productos o agrégalos directamente desde el catálogo para calcular el total a pagar y la cantidad estimada de fichos.</p>
+      
+      <div class="calculadora-controles">
+        <div class="campo-calculadora">
+          <label for="select-producto">1. Selecciona un producto (opcional):</label>
+          <select id="select-producto" class="select-moderno">
+            <option value="" disabled selected>-- Elige un producto --</option>
+          </select>
+        </div>
+        <div class="campo-calculadora">
+          <label for="input-cantidad">2. Cantidad:</label>
+          <input type="number" id="input-cantidad" class="input-moderno" min="1" value="1">
+        </div>
+        <button id="btn-agregar-calculadora" class="btn-primario">+ Agregar a la lista</button>
+      </div>
+
+      <div class="calculadora-resumen">
+        <h3>Lista de Compra</h3>
+        <div class="tabla-contenedor">
+          <table class="tabla-productos" id="tabla-items-calculadora">
+            <thead>
+              <tr>
+                <th>Producto</th>
+                <th class="col-precio">Precio Unit.</th>
+                <th class="col-precio">Cant.</th>
+                <th class="col-precio">Subtotal</th>
+                <th>Acción</th>
+              </tr>
+            </thead>
+            <tbody id="tbody-calculadora">
+              <tr class="fila-vacia">
+                <td colspan="5">Aún no has agregado productos a tu cálculo.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="panel-totales">
+          <div class="total-item">
+            <span>Cantidad total de productos:</span>
+            <strong id="total-cantidad-items">0</strong>
+          </div>
+          <div class="total-item">
+            <span>Valor Total Estimado:</span>
+            <strong id="total-valor-estimado" class="resaltado-monto">$0</strong>
+          </div>
+          <div class="total-item destacado">
+            <span>Número aproximado de fichos ($1.000 c/u):</span>
+            <strong id="total-fichos-estimados">0 fichos</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- BOTÓN FLOTANTE FIJO CALCULADORA -->
+  <button id="btn-flotante-calculadora" class="btn-flotante-calculadora" aria-label="Abrir Calculadora de Fichos">
+    <span class="icono-flotante">🧮</span>
+    <span class="texto-btn-flotante">Fichos</span>
+    <span id="badge-fichos" class="badge-fichos oculto">0</span>
+  </button>
+
+  <!-- FEEDBACK VISUAL DE AGREGADO (TOAST) -->
+  <div id="toast-notificacion" class="toast-notificacion oculto" role="status" aria-live="polite">
+    <span class="toast-icono">✅</span>
+    <span id="toast-mensaje">Producto agregado a la calculadora</span>
+  </div>
+
   <footer class="pie-pagina">
     <div class="footer-contenido">
       <p>&copy; 2026 Día de la Antioqueñidad — Todos los derechos reservados.</p>
-      <p class="sub-footer">Diseñado con excelencia para toda la comunidad educativa</p>
+      <p class="sub-footer">Diseñado como agradecimiento para toda la comunidad educativa</p>
     </div>
   </footer>
 
