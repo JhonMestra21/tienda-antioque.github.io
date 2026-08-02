@@ -48,7 +48,7 @@ h1, h2, h3, h4, .btn-filtro {
 .header-principal {
   background: linear-gradient(135deg, var(--color-primario-oscuro), var(--color-primario));
   color: var(--color-blanco);
-  padding: 1rem 1.5rem;
+  padding: 0.85rem 1.5rem;
   box-shadow: var(--sombra-md);
   position: sticky;
   top: 0;
@@ -61,42 +61,51 @@ h1, h2, h3, h4, .btn-filtro {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1rem;
 }
 
 .logo-titulo {
   display: flex;
   align-items: center;
   gap: 1.25rem;
+  min-width: 0;
+  flex: 1;
 }
 
 .logo-colegio {
-  width: 60px;
-  height: 60px;
+  width: 58px;
+  height: 58px;
   border-radius: 50%;
   object-fit: contain;
   background: var(--color-blanco);
   padding: 4px;
   box-shadow: var(--sombra-sm);
+  flex-shrink: 0;
 }
 
 .textos-header {
   display: flex;
   flex-direction: column;
+  min-width: 0;
+  flex: 1;
 }
 
 .subtitulo-header {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.8px;
   color: var(--color-secundario);
   font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .header-principal h1 {
   color: var(--color-blanco);
   font-size: 1.55rem;
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.25;
 }
 
 /* MENÚ HAMBURGUESA VISIBLE EN TODAS LAS PANTALLAS */
@@ -114,6 +123,7 @@ h1, h2, h3, h4, .btn-filtro {
   height: 44px;
   border-radius: 8px;
   transition: var(--transicion);
+  flex-shrink: 0;
 }
 
 .menu-hamburguesa:hover {
@@ -143,7 +153,7 @@ h1, h2, h3, h4, .btn-filtro {
   transform: translateY(-8px) rotate(-45deg);
 }
 
-/* NAVEGACIÓN DESPLEGABLE TIPO HAMBURGUESA - NO SE PISA CON LA SECCIÓN BANCOS */
+/* NAVEGACIÓN DESPLEGABLE TIPO HAMBURGUESA */
 .nav-principal {
   position: absolute;
   top: 100%;
@@ -459,7 +469,7 @@ h1, h2, h3, h4, .btn-filtro {
   border-left: 4px solid var(--color-primario);
 }
 
-/* ================== BOTONES DE AGREGADO RÁPIDO (CASO A & B) ================== */
+/* ================== BOTONES DE AGREGADO RÁPIDO ================== */
 .btn-agregar-rapido {
   background-color: #FFF5F5;
   color: var(--color-primario);
@@ -495,7 +505,7 @@ h1, h2, h3, h4, .btn-filtro {
   padding: 0.55rem 1rem;
 }
 
-/* ================== CASO 1: TARJETAS DE PRODUCTO (<= 3 ítems) ================== */
+/* ================== TARJETAS DE PRODUCTO ================== */
 .grid-productos-tarjetas {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -549,7 +559,7 @@ h1, h2, h3, h4, .btn-filtro {
   font-size: 1.05rem;
 }
 
-/* ================== CASO 2: TABLAS MODERNAS (> 3 ítems) ================== */
+/* ================== TABLAS MODERNAS ================== */
 .tabla-contenedor {
   width: 100%;
   overflow-x: auto;
@@ -933,7 +943,7 @@ h1, h2, h3, h4, .btn-filtro {
   pointer-events: none;
 }
 
-/* ================== PIE DE PÁGINA (ESPACIADO PARA NO QUEDAR CUBIERTO POR BOTÓN FLOTANTE) ================== */
+/* ================== PIE DE PÁGINA ================== */
 .pie-pagina {
   background-color: #111827;
   color: #F9FAFB;
@@ -955,10 +965,35 @@ h1, h2, h3, h4, .btn-filtro {
   margin-top: 0.4rem;
 }
 
-/* ================== RESPONSIVE ================== */
+/* ================== RESPONSIVE Y MEJORAS EN MÓVIL FORZADAS ================== */
 @media (max-width: 768px) {
+  .header-principal {
+    padding: 0.75rem 1rem;
+  }
+
   .header-contenido {
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    gap: 0.6rem;
+  }
+
+  .logo-titulo {
+    gap: 0.75rem;
+  }
+
+  .logo-colegio {
+    width: 48px;
+    height: 48px;
+    padding: 2px;
+  }
+
+  .header-principal h1 {
+    font-size: 1.18rem;
+    line-height: 1.15;
+  }
+
+  .subtitulo-header {
+    font-size: 0.68rem;
+    letter-spacing: 0.5px;
   }
 
   .nav-contenedor {
@@ -984,7 +1019,7 @@ h1, h2, h3, h4, .btn-filtro {
   }
 
   .info-region h2 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 
   .tabla-productos th,
@@ -1009,5 +1044,39 @@ h1, h2, h3, h4, .btn-filtro {
     right: 1.25rem;
     bottom: 5.5rem;
     justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-principal {
+    padding: 0.65rem 0.85rem;
+  }
+
+  .logo-titulo {
+    gap: 0.55rem;
+  }
+
+  .logo-colegio {
+    width: 42px;
+    height: 42px;
+  }
+
+  .header-principal h1 {
+    font-size: 1.05rem;
+  }
+
+  .subtitulo-header {
+    font-size: 0.62rem;
+    letter-spacing: 0.3px;
+  }
+
+  .menu-hamburguesa {
+    width: 40px;
+    height: 40px;
+    padding: 0.45rem;
+  }
+
+  .menu-hamburguesa .barra {
+    width: 20px;
   }
 }
